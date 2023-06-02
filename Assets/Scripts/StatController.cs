@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/*  
+ *  Controller for stats ui
+ *  Can set attack, defense, and speed text
+ */
 public class StatController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI AttackText;

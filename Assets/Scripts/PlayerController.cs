@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ *  Controller for the player
+ *  Handles movement, attacking, settings stats and health
+ *  Consider splitting into multiple classes if it grows too large
+ */
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float maxHealth;

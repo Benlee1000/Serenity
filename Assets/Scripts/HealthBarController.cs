@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*  
+ *  Controller for health bar slider
+ *  Can set max health and current health
+ */
 public class HealthBarController : MonoBehaviour
 {
     public Slider slider;
