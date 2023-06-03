@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currentHealth;
     [SerializeField] GameObject healthBarObject;
     [SerializeField] GameObject statsObject;
+    [SerializeField] private Animator anim;
+    // anim is used to trigger the different animations
 
     private HealthBarController healthBarController;
     private StatController statController;
