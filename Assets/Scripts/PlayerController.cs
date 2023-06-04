@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private int defense;
     private int speed;
 
+    //speed getter and setter
+    public int Speed { get => speed; set => speed = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,4 +50,5 @@ public class PlayerController : MonoBehaviour
         healthBarController.SetHealth(currentHealth);
 
     }
+
 }
