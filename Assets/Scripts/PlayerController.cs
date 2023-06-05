@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private int attack;
     private int defense;
-    private int speed;
+    private int speed = 8;
 
     //speed getter and setter
     public int Speed { get => speed; set => speed = value; }
@@ -50,5 +50,7 @@ public class PlayerController : MonoBehaviour
         healthBarController.SetHealth(currentHealth);
 
     }
+
+    public int getSpeed () { return speed; }
 
 }

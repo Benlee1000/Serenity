@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveSpeed;
-    public float dashSpeed = 10f;
+    private int moveSpeed;
+    public int dashSpeed = 10;
     [SerializeField] private GameObject playerObject;
     private PlayerController playerController;
     private Vector2 movementDirection;
@@ -19,10 +19,9 @@ public class PlayerMovement : MonoBehaviour
         timeSinceLastDash += Time.deltaTime;
 
         //Getting speed based off of playercontroller because speed can change
-        playerController = playerObject.GetComponentInChildren<PlayerController>();
-       
+        playerController = playerObject.GetComponent<PlayerController>();
 
-        moveSpeed = playerController.Speed;
+        moveSpeed = playerController.Speed; 
 
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         playerObject.transform.Translate(movementDirection * Time.deltaTime * moveSpeed);
