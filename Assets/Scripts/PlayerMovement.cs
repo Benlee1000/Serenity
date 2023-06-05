@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private float timeSinceLastDash = 0f;
     private float dashCooldown = 2f;
 
+    [SerializeField] private Animator anim;
+
     private void Update()
     {
         timeSinceLastDash += Time.deltaTime;

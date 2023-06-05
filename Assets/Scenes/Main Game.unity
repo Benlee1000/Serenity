@@ -5208,6 +5208,21 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 2258270312971345817, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
   m_PrefabInstance: {fileID: 744465598}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &744465606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744465599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79998907fd2c60c46a9e61d59d815fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 10
+  playerObject: {fileID: 744465599}
+  anim: {fileID: 744465602}
 --- !u!1 &878715708
 GameObject:
   m_ObjectHideFlags: 0
