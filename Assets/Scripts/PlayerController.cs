@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBarController.SetHealth(currentHealth);
-
+        anim.SetTrigger("Hurt");
     }
 
     public int getSpeed () { return speed; }
