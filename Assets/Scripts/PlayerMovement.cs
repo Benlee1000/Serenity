@@ -8,11 +8,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerSpeed;
     [SerializeField] float diagonalMultiplier;
     [SerializeField] float speed;
-    void move(int vert,int horiz,int speedMultiplier){
+    //vert=1.0 for up and -1.0 for down
+    //horiz=1.0 for right and -1.0 for left
+    void move(float vert,float horiz,float speedMultiplier){
         if(vert!=0 && horiz!=0){
             vert*=diagonalMultiplier;
             horiz*=diagonalMultiplier;
         }
-        this.position+=Vector3(horiz*playerSpeed,vert*playerSpeed,0);
+        this.transform.position+=new Vector3(horiz*playerSpeed,vert*playerSpeed,0);
     }
 }
