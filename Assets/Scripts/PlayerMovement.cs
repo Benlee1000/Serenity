@@ -27,7 +27,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementDirection != new Vector2(0,0))
         {
-            anim.SetTrigger("playerRun");
+            //anim.SetTrigger("playerRun");
+            anim.SetInteger("RunSpeed", 1);
+            CheckPlayerOrientation(movementDirection);
+
+        } 
+        else
+        {
+            anim.SetInteger("RunSpeed", 0);
         }
 
         playerObject.transform.Translate(movementDirection * Time.deltaTime * moveSpeed);
@@ -45,4 +52,30 @@ public class PlayerMovement : MonoBehaviour
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         playerObject.transform.Translate(movementDirection * Time.deltaTime * dashSpeed);
     }
+
+    private void CheckPlayerOrientation(Vector2 movementDirection)
+    {
+        if (movementDirection.x != 0)
+        {
+            if (MovingRight(movementDirection))
+            {
+                playerObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                playerObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
+        }
+    }
+
+    private bool MovingRight(Vector2 moveDirection)
+    {
+        if (moveDirection.x > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 }
