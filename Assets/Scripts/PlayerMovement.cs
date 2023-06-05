@@ -18,3 +18,4 @@ public class PlayerMovement : MonoBehaviour
         this.transform.position+=new Vector3(horiz*playerSpeed,vert*playerSpeed,0);
     }
 }
+//
