@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = playerController.Speed; 
 
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if (movementDirection != new Vector2(0,0))
+        {
+            anim.SetTrigger("playerRun");
+        }
+
         playerObject.transform.Translate(movementDirection * Time.deltaTime * moveSpeed);
 
         
