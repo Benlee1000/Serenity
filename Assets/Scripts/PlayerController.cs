@@ -42,6 +42,17 @@ public class PlayerController : MonoBehaviour
             TakeDamage(5);
             statController.setAttackText(5);
         }
+
+        Vector3 mousePos = Input.mousePosition;
+        if (mousePos.x >= (Screen.width/2.0))
+        {
+            this.GetComponent<SpriteRenderer>().flipX = true;
+        } 
+        else
+        {
+            this.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
     }
 
     void TakeDamage(int damage)
