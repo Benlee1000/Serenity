@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 /*  
- *  Controls if the door is open or closed based on game state
+ *  Controls if the door is open or closed based on if all enemies/waves are over.
  */
 public class Door : MonoBehaviour
 {

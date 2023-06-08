@@ -62,7 +62,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         Debug.Log("End of conversation");
-        Loader.Load(Loader.Scene.MainGame);
+        Loader.Load(Loader.Scene.Level1);
     }
 
 }

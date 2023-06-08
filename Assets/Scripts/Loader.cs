@@ -5,7 +5,7 @@ public static class Loader
     // Name of scenes
     public enum Scene {
         StartScreen,
-        MainGame,
+        Level1,
         DialogueScreen,
     }
 
