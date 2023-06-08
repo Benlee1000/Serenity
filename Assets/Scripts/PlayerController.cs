@@ -9,6 +9,7 @@ using UnityEngine;
  */
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
     [SerializeField] GameObject healthBarObject;
@@ -26,6 +27,10 @@ public class PlayerController : MonoBehaviour
     //speed getter and setter
     public int Speed { get => speed; set => speed = value; }
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -55,13 +60,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
+        //TODO: Add a conditional for IFrames. Like If not invinicble then do this down below, otherwise nothing happens
         currentHealth -= damage;
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
     }
-
-    public int getSpeed () { return speed; }
 
 }
