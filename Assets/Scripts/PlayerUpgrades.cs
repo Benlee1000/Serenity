@@ -9,7 +9,7 @@
  *  Could possibly store this data in a txt file for saving and continuing game
  *  Maybe when a save button is clicked, or before the window is closed?
  */
-public static class Scores
+public static class PlayerUpgrades
 {
     private static int attack;
     private static int defense;
@@ -19,7 +19,7 @@ public static class Scores
     // Might be unused
     private static int dashDamage;
     
-    // Method to get player upgrades
+    // Methods to get player upgrades
     public static int GetAttack()
     {
         return attack;

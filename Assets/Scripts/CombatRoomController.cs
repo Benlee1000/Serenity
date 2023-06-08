@@ -9,23 +9,27 @@ using UnityEngine.SceneManagement;
  */
 public class CombatRoomController : MonoBehaviour
 {
-    Loader.Scene scene;
+    private PlayerUpgradeController controller;
+    private Loader.Scene scene;
     
-    // Player exited current room -> display upgrades
+    // Player exited current room -> display upgrades.
+    // Pass control to the player upgrade controller.
     public void DisplayUpgradeScreen()
     {
-        //Loader.Load(Loader.Scene.DialogueScreen);
-        Transition();
+        controller.DisplayCards();
     }
 
-    // Transitions scene after player picks an upgrade;
+    // Transitions scene after player picks an upgrade.
     public void Transition()
     {
         /*switch(scene)
         {
-            case Loader.Scene.MainGame:
+            case Loader.Scene.Level1:
                 scene = Loader.Scene.Level2;
                 Loader.Load(Loader.Scene.Level2);
+            case Loader.Scene.Level2:
+                scene = Loader.Scene.BossRoom;
+                Loader.Load(Loader.Scene.BossRoom);
         }*/
     }
 }
