@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner instance;
     [SerializeField] List<EnemyController> enemyPrefabs;
-    int waves;
+    private int waves;
     public int numberOfEnemies;
     [SerializeField] private Vector2 leftBottom;
     [SerializeField] private Vector2 topRight;
