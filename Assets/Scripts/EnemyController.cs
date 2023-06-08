@@ -24,6 +24,12 @@ public class EnemyController : MonoBehaviour
     {
         //Basic Movement AI. Just goes towards the player. Doesn't check for obstacles in the way
         transform.position = Vector3.MoveTowards(this.transform.position, PlayerController.instance.transform.position, speed * Time.deltaTime);
+
+        if(hp <= 0)
+        {
+            Die();
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,6 +48,12 @@ public class EnemyController : MonoBehaviour
             isTouchingPlayer = false;
         }
 
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+        EnemySpawner.instance.numberOfEnemies--;
     }
 
 }
