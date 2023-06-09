@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerSpeed;
     [SerializeField] float diagonalMultiplier;
     [SerializeField] float speed;
-    [SerializeField] private Animator anim;
+    //[SerializeField] private Animator anim;
     //vert=1.0 for up and -1.0 for down
     //horiz=1.0 for right and -1.0 for left
     void move(float vert,float horiz,float speedMultiplier){

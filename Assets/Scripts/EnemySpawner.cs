@@ -43,7 +43,8 @@ public class EnemySpawner : MonoBehaviour
             float spawnX = Random.Range(leftBottom.x, topRight.x);
             float spawnY = Random.Range(leftBottom.y, topRight.y);
             EnemyController randEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
-            anim = randEnemy.GetComponent<Animator>();
+            //anim = randEnemy.GetComponentInParent<Animator>();
+            //anim.SetTrigger("run");
             EnemyController enemy = Instantiate(randEnemy);
             enemy.transform.position = new Vector2(spawnX, spawnY);
             
