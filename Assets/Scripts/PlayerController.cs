@@ -57,6 +57,9 @@ public class PlayerController : MonoBehaviour
         {
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
+        //copied from obscura (zachary): feel free to replace with different/better input system
+        Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection);
 
     }
 
