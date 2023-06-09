@@ -11,7 +11,30 @@ public class CombatRoomController : MonoBehaviour
 {
     private PlayerUpgradeController controller;
     private Loader.Scene scene;
-    
+    [SerializeField] private GameObject pauseMenuObject;
+    private PauseMenuController pauseMenu;
+
+
+    private void Start()
+    {
+        pauseMenu = pauseMenuObject.GetComponent<PauseMenuController>();
+    }
+    private void Update()
+    {
+        // Handle pasuing
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseMenu.isPaused)
+            {
+                pauseMenu.ResumeGame();
+            }
+            else
+            {
+                pauseMenu.PauseGame();
+            }
+        }
+    }
+
     // Player exited current room -> display upgrades.
     // Pass control to the player upgrade controller.
     public void DisplayUpgradeScreen()
