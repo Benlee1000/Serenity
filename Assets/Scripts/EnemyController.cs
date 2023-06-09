@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int defense;
     [SerializeField] private int speed;
     private bool isTouchingPlayer = false;
+    //private Animator anim;
 
     private void FixedUpdate()
     {
@@ -24,6 +25,12 @@ public class EnemyController : MonoBehaviour
     {
         //Basic Movement AI. Just goes towards the player. Doesn't check for obstacles in the way
         transform.position = Vector3.MoveTowards(this.transform.position, PlayerController.instance.transform.position, speed * Time.deltaTime);
+
+        if (this.transform.position != PlayerController.instance.transform.position)
+        {
+            //  anim.SetTrigger("run");
+            GetComponentInParent<EnemySpawner>().anim.SetTrigger("run"); // FIXME
+        }
 
         if(hp <= 0)
         {

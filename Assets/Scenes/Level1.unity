@@ -5034,6 +5034,7 @@ MonoBehaviour:
   leftBottom: {x: -18, y: -8}
   topRight: {x: 18, y: 8}
   ParticlePrefab: {fileID: 4257819816458511476, guid: 7c2e740e3028ad4469d204f2bae30986, type: 3}
+  anim: {fileID: 0}
 --- !u!4 &154450536
 Transform:
   m_ObjectHideFlags: 0
@@ -6426,6 +6427,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -418380609142063933, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 744465602}
     - target: {fileID: 2258270312971345816, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6518,6 +6523,7 @@ MonoBehaviour:
   playerSpeed: 0
   diagonalMultiplier: 0
   speed: 0
+  anim: {fileID: 744465602}
 --- !u!1 &801542161
 GameObject:
   m_ObjectHideFlags: 0

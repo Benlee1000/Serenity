@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector2 leftBottom;
     [SerializeField] private Vector2 topRight;
     [SerializeField] private Transform ParticlePrefab;
+    public Animator anim;
 
     void Awake()
     {
@@ -41,7 +42,9 @@ public class EnemySpawner : MonoBehaviour
         {
             float spawnX = Random.Range(leftBottom.x, topRight.x);
             float spawnY = Random.Range(leftBottom.y, topRight.y);
-            EnemyController enemy = Instantiate(enemyPrefabs[Random.Range(0,enemyPrefabs.Count)]);
+            EnemyController randEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
+            anim = randEnemy.GetComponent<Animator>();
+            EnemyController enemy = Instantiate(randEnemy);
             enemy.transform.position = new Vector2(spawnX, spawnY);
             
             Transform particles = Instantiate(ParticlePrefab);
