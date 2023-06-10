@@ -6431,6 +6431,14 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 744465602}
+    - target: {fileID: -418380609142063933, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: playerSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258270312971345815, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2258270312971345816, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6479,6 +6487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5672409437743911855, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
 --- !u!1 &744465599 stripped
@@ -6498,17 +6510,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835705481c8749b4bb55b6a627aafc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
+  maxHealth: 50
+  currentHealth: 50
   healthBarObject: {fileID: 1845722276}
   statsObject: {fileID: 1106692839}
   anim: {fileID: 744465602}
+  AttackCenter: {fileID: 1395208959}
 --- !u!95 &744465602 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2258270312971345817, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
   m_PrefabInstance: {fileID: 744465598}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &744465606
+--- !u!114 &744465611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6517,13 +6530,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 744465599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79998907fd2c60c46a9e61d59d815fd4, type: 3}
+  m_Script: {fileID: 11500000, guid: c676cfce8c5fc5e44b9aee7663d32dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 0
-  diagonalMultiplier: 0
-  speed: 0
-  anim: {fileID: 744465602}
+--- !u!50 &744465612
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744465599}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &801542161
 GameObject:
   m_ObjectHideFlags: 0
@@ -7603,6 +7633,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349084632}
   m_CullTransparentMesh: 1
+--- !u!1 &1395208959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7689035917074672762, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+  m_PrefabInstance: {fileID: 744465598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1446858484
 GameObject:
   m_ObjectHideFlags: 0

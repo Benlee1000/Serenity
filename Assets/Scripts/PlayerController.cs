@@ -15,17 +15,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject healthBarObject;
     [SerializeField] GameObject statsObject;
     [SerializeField] private Animator anim;
+    private float timeSinceLastHit = 0f;
+    private float timeSinceLastAttack = 0f;
+    [SerializeField] private GameObject AttackCenter;
     // anim is used to trigger the different animations
 
     private HealthBarController healthBarController;
     private StatController statController;
 
-    private int attack;
+    private int attack = 1;
     private int defense;
     private int speed = 8;
 
     //speed getter and setter
     public int Speed { get => speed; set => speed = value; }
+    public int Attack { get => attack; set => attack = value; }
 
     private void Awake()
     {
@@ -42,10 +46,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastAttack += Time.deltaTime;
+        timeSinceLastHit += Time.deltaTime;
+
+        if(timeSinceLastAttack >= .25f)
+        {
+            AttackCenter.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            //TODO This is for the dash
             TakeDamage(5);
             statController.setAttackText(5);
+        }
+        
+        //calculating the proper angle for the attack
+        Vector3 rotation = AttackCenter.transform.localEulerAngles;
+        rotation.z = Mathf.Atan2(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - AttackCenter.transform.position.y, Camera.main.ScreenToWorldPoint(Input.mousePosition).x - AttackCenter.transform.position.x) * Mathf.Rad2Deg;
+        AttackCenter.transform.localEulerAngles = rotation;
+
+        //Attack if left click
+        if (Input.GetButton("Fire1") && !AttackCenter.activeSelf)
+        {
+            PlayerAttack();
         }
 
         Vector3 mousePos = Input.mousePosition;
@@ -66,9 +90,30 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         //TODO: Add a conditional for IFrames. Like If not invinicble then do this down below, otherwise nothing happens
+        if (timeSinceLastHit < 1f)
+        {
+            return;
+        }
+
+        timeSinceLastHit = 0f;
         currentHealth -= damage;
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
+        if (currentHealth <= 0)
+        {
+            //Call death state or scene or whatever it is
+
+            //Temporary, we don't actually want to KILL HIM
+            Destroy(gameObject);
+        }
+
+    }
+
+    public void PlayerAttack()
+    {
+        Debug.Log("we firin");
+        timeSinceLastAttack = 0f;
+        AttackCenter.SetActive(true);
     }
 
 }

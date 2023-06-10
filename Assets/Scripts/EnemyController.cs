@@ -44,6 +44,11 @@ public class EnemyController : MonoBehaviour
         {
             isTouchingPlayer = true;
         }
+
+        if(collision.collider.gameObject.name == "AttackOuter")
+        {
+            hp -= PlayerController.instance.Attack;
+        }
          
     }
 
