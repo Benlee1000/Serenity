@@ -111,7 +111,6 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerAttack()
     {
-        Debug.Log("we firin");
         timeSinceLastAttack = 0f;
         AttackCenter.SetActive(true);
     }
