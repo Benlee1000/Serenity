@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
     {
         timeSinceLastAttack = 0f;
         AttackCenter.SetActive(true);
+        anim.SetTrigger("Attack");
     }
 
 }

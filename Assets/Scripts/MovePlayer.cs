@@ -17,6 +17,7 @@ public class MovePlayer : MonoBehaviour
 
     // Velocity models equation maxSpeed(1-e^(-defautSharpness*t))
     // Acceleration is maxSpeed*defaultSharpness*e^(-defaultSsharpness*t)
+    [SerializeField] private Animator anim;
     void Start()
     {
         decelSpeed=maxSpeed*defaultSharpness;
@@ -63,6 +64,15 @@ public class MovePlayer : MonoBehaviour
             a=-glideDecelSpeed*(playerVel.y/maxSpeed);
         }
         playerVel.y+=a*Time.deltaTime;
+
+        float min = 0.2f;
+        if (Mathf.Abs(playerVel.x) >= min || Mathf.Abs(playerVel.y) >= min)
+        {
+            anim.SetInteger("RunSpeed", 1);
+        } else
+        {
+            anim.SetInteger("RunSpeed", 0);
+        }
 
         this.transform.position=playerPos+playerVel*Time.deltaTime;
         
