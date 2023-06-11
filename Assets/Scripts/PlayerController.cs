@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private StatController statController;
 
     private int attack = 1;
-    private int defense;
+    private int defense = 1;
     private int speed = 8;
 
     //speed getter and setter
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-
+        /*
         timeSinceLastHit = 0f;
         currentHealth -= damage;
         healthBarController.SetHealth(currentHealth);
@@ -104,8 +104,10 @@ public class PlayerController : MonoBehaviour
             //Call death state or scene or whatever it is
 
             //Temporary, we don't actually want to KILL HIM
+            // NOTE: Could deactivate the player instead so the playercontroller doesn't get deleted
             Destroy(gameObject);
         }
+        */
 
     }
 

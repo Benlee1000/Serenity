@@ -16,9 +16,9 @@ public class StatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AttackText.text = "0";
+        AttackText.text = "1";
         DefenseText.text = "1";
-        SpeedText.text = "2";
+        SpeedText.text = "8";
     }
 
     public void setAttackText(int attack)
