@@ -68,6 +68,7 @@ public class EnemyController : MonoBehaviour
         if(collision.collider.gameObject.name == "AttackOuter")
         {
             hp -= PlayerController.instance.Attack;
+            anim.SetTrigger("enemyTakeDamage");
         }
          
     }
@@ -83,6 +84,7 @@ public class EnemyController : MonoBehaviour
 
     public void Die()
     {
+        anim.SetTrigger("enemyDeath");
         Destroy(gameObject);
         EnemySpawner.instance.numberOfEnemies--;
     }
