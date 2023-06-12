@@ -34,6 +34,9 @@ public class PlayerUpgradeController : MonoBehaviour
         // Upgrade the player's Attack
         PlayerPrefs.SetInt("Attack", PlayerPrefs.GetInt("Attack") + attackVal);
 
+        // Time should move again.
+        Time.timeScale = 1f;
+
         // Use the loader to find the current scene, then increase it by 1.
         Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
         
@@ -43,6 +46,9 @@ public class PlayerUpgradeController : MonoBehaviour
         // Upgrade the player's Defense
         PlayerPrefs.SetInt("Defense", PlayerPrefs.GetInt("Defense") + defenseVal);
 
+        // Time should move again.
+        Time.timeScale = 1f;
+
         // Use the loader to find the current scene, then increase it by 1.
         Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
 
@@ -51,6 +57,9 @@ public class PlayerUpgradeController : MonoBehaviour
     {
         // Upgrade the player's Speed
         PlayerPrefs.SetInt("Speed", PlayerPrefs.GetInt("Speed") + speedVal);
+
+        // Time should move again.
+        Time.timeScale = 1f;
 
         // Use the loader to find the current scene, then increase it by 1.
         Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // anim is used to trigger the different animations
 
     private HealthBarController healthBarController;
+    private CombatRoomController combatRoomController;
 
     private int attack;
     private int defense;
@@ -89,21 +90,22 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        /*
+
         timeSinceLastHit = 0f;
         currentHealth -= damage;
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
-            //Call death state or scene or whatever it is
-
-            //Temporary, we don't actually want to KILL HIM
+            // Call death state or scene or whatever it is.
+            // First stop time.
+            Time.timeScale = 0f;
+            combatRoomController.DisplayLoseScreen();
+            
+            /*//Temporary, we don't actually want to KILL HIM
             // NOTE: Could deactivate the player instead so the playercontroller doesn't get deleted
-            Destroy(gameObject);
+            Destroy(gameObject);*/
         }
-        */
-
     }
 
     public void PlayerAttack()

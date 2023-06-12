@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector2 topRight;
     [SerializeField] private Transform ParticlePrefab;
     public Animator anim;
-
+    private CombatRoomController combatRoomController;
     void Awake()
     {
         instance = this;
@@ -28,11 +28,26 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(numberOfEnemies == 0 && waves > 0)
+        // Checks general win condition -> start next wave.
+        if (numberOfEnemies == 0 && waves > 0)
         {
             waves--;
             StartWave();
         } 
+
+        // Checks general win condition -> go to upgrades.
+        else if (numberOfEnemies == 0 && waves <= 0)
+        {
+            Time.timeScale = 0f;
+            combatRoomController.DisplayUpgradeScreen();
+        }
+        
+        // Checks general win condition + if its last level -> go to start screen.
+        else if (numberOfEnemies == 0 && waves <= 0 && Loader.getCurrentScene() == 9)
+        {
+            Time.timeScale = 0f;
+            combatRoomController.DisplayWinScreen();
+        }
     }
 
     public void StartWave()

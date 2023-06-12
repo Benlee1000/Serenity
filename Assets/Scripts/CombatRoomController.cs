@@ -13,8 +13,10 @@ public class CombatRoomController : MonoBehaviour
     private Loader.Scene scene;
     [SerializeField] private GameObject pauseMenuObject;
     [SerializeField] private GameObject upgradeMenuObject;
+    [SerializeField] private GameObject winScreenObject;
+    [SerializeField] private GameObject loseScreenObject;
     private PauseMenuController pauseMenu;
-
+    private float timeSinceDeath;
 
     private void Start()
     {
@@ -43,17 +45,30 @@ public class CombatRoomController : MonoBehaviour
         upgradeMenuObject.SetActive(true);
     }
 
-    // Transitions scene after player picks an upgrade.
-    public void Transition()
+    public void DisplayWinScreen()
     {
-        /*switch(scene)
+        winScreenObject.SetActive(true);
+        while (timeSinceDeath <= 5f)
         {
-            case Loader.Scene.Level1:
-                scene = Loader.Scene.Level2;
-                Loader.Load(Loader.Scene.Level2);
-            case Loader.Scene.Level2:
-                scene = Loader.Scene.BossRoom;
-                Loader.Load(Loader.Scene.BossRoom);
-        }*/
+            timeSinceDeath += Time.deltaTime;
+        }
+        timeSinceDeath = 0;
+
+        Time.timeScale = 1f;
+        Loader.Load(Loader.Scene.StartScreen);
+    }
+
+    public void DisplayLoseScreen()
+    {
+        loseScreenObject.SetActive(true);
+        while (timeSinceDeath <= 5f)
+        {
+            timeSinceDeath += Time.deltaTime;
+        }
+
+        timeSinceDeath = 0;
+
+        Time.timeScale = 1f;
+        Loader.Load(Loader.Scene.StartScreen);
     }
 }
