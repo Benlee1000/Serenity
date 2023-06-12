@@ -2,6 +2,8 @@ using UnityEngine.SceneManagement;
 
 public static class Loader
 {
+    private static int currentScene = 0;
+
     // Name of scenes
     public enum Scene {
         StartScreen,
@@ -20,6 +22,12 @@ public static class Loader
     // Loads the scene based on the stringified enum value.
     public static void Load(Scene scene)
     {
+        currentScene = (int)scene;
         SceneManager.LoadScene(scene.ToString());
+    }
+
+    public static int getCurrentScene()
+    {
+        return currentScene;
     }
 }
