@@ -152,6 +152,7 @@ MonoBehaviour:
   attack: 4
   defense: 0
   speed: 4
+  healthBar: {fileID: 1390145402367408732}
   maxHP: 10
 --- !u!50 &-2188941719032915172
 Rigidbody2D:
