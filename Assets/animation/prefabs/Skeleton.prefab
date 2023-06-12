@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 1578273948627650492}
   - component: {fileID: 6162881794552793274}
   - component: {fileID: 5908495864376493451}
-  - component: {fileID: 8734861815331813286}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -235,7 +234,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &6162881794552793274
 MonoBehaviour:
@@ -277,17 +276,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!210 &8734861815331813286
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2392443948500327997}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &3340644937554878124
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +491,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
 --- !u!1 &7664013607225368305
 GameObject:
   m_ObjectHideFlags: 0
