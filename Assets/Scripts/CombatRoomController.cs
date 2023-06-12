@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
  */
 public class CombatRoomController : MonoBehaviour
 {
-    
-    private Loader.Scene scene;
     [SerializeField] private GameObject pauseMenuObject;
     [SerializeField] private GameObject upgradeMenuObject;
     [SerializeField] private GameObject winScreenObject;
@@ -39,15 +37,21 @@ public class CombatRoomController : MonoBehaviour
             }
         }
         
+        if (PlayerController.instance.Health <= 0)
+        {
+            Time.timeScale = 0f;
+            DisplayLoseScreen();
+        }
+
         // Checks general win condition -> Pause time -> Go to upgrades.
-        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.waves <= 0)
+        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0)
         {
             Time.timeScale = 0f;
             upgradeMenu.DisplayUpgradeScreen();
         }
 
         // Checks general win condition + if its last level -> Pause time -> Go to start screen.
-        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.waves <= 0 && Loader.getCurrentScene() == 9)
+        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0 && Loader.getCurrentScene() == 9)
         {
             Time.timeScale = 0f;
             DisplayWinScreen();
@@ -59,6 +63,8 @@ public class CombatRoomController : MonoBehaviour
         winScreenObject.SetActive(true);
         
         // Using timeSinceDeath as a variable to store time. Player didn't actually die.
+        // ***** TIME SCALE SET TO 0 MAY AFFECT TIME.DELTATIME
+        // MAY HAVE TO USE SLEEP
         while (timeSinceDeath <= 5f)
         {
             timeSinceDeath += Time.deltaTime;

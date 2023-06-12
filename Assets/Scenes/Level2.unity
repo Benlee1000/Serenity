@@ -8023,6 +8023,7 @@ MonoBehaviour:
   attackUpgradeText: {fileID: 1191405214}
   defenseUpgradeText: {fileID: 98736814}
   seppedUpgradeText: {fileID: 22338314}
+  upgradeMenu: {fileID: 598900887}
 --- !u!114 &598900890
 MonoBehaviour:
   m_ObjectHideFlags: 0
