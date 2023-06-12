@@ -152,6 +152,7 @@ MonoBehaviour:
   attack: 4
   defense: 0
   speed: 4
+  maxHP: 10
 --- !u!50 &-2188941719032915172
 Rigidbody2D:
   serializedVersion: 4
@@ -185,6 +186,7 @@ GameObject:
   - component: {fileID: 1578273948627650492}
   - component: {fileID: 6162881794552793274}
   - component: {fileID: 5908495864376493451}
+  - component: {fileID: 8734861815331813286}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -274,6 +276,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!210 &8734861815331813286
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2392443948500327997}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &3340644937554878124
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4790942153641764760}
   - component: {fileID: 1390145402367408732}
+  - component: {fileID: 7191351824129661124}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -478,6 +492,17 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!210 &7191351824129661124
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882150182535753251}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &7664013607225368305
 GameObject:
   m_ObjectHideFlags: 0

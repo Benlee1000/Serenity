@@ -569,6 +569,7 @@ MonoBehaviour:
   attack: 6
   defense: 0
   speed: 2
+  maxHP: 15
 --- !u!50 &-43310437216095205
 Rigidbody2D:
   serializedVersion: 4

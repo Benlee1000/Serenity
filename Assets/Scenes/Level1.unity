@@ -155,6 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuObject: {fileID: 801542161}
   upgradeMenuObject: {fileID: 1916644914}
+  winScreenObject: {fileID: 0}
+  loseScreenObject: {fileID: 0}
 --- !u!4 &25450503
 Transform:
   m_ObjectHideFlags: 0

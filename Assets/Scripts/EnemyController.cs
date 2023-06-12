@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /*  
  *  Abstract base class for all enemy controllers
@@ -13,11 +14,14 @@ public class EnemyController : MonoBehaviour
     private bool isTouchingPlayer = false;
     private Animator anim;
     private SpriteRenderer sprite;
+    private float healthBar;
+    [SerializeField] private int maxHP;
 
     private void Start()
     {
         anim = GetComponentInParent<Animator>();
         sprite = GetComponentInParent<SpriteRenderer>();
+        healthBar = GetComponentInChildren<Canvas>().GetComponent<Slider>().value;
     }
     private void FixedUpdate()
     {
@@ -70,6 +74,7 @@ public class EnemyController : MonoBehaviour
         if(collision.collider.gameObject.name == "AttackOuter")
         {
             hp -= PlayerController.instance.Attack;
+            healthBar = (float)hp / (float)maxHP;
             anim.SetTrigger("enemyTakeDamage");
         }
          
