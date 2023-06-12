@@ -6,13 +6,21 @@ public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner instance;
     [SerializeField] List<EnemyController> enemyPrefabs;
+    [SerializeField] List<GameObject> spawnLocations;
+    [SerializeField] int waveMin;
+    [SerializeField] int waveMax;
     private int waves;
+    [SerializeField] int enemyMin;
+    [SerializeField] int enemyMax;
     public int numberOfEnemies;
     [SerializeField] private Vector2 leftBottom;
     [SerializeField] private Vector2 topRight;
     [SerializeField] private Transform ParticlePrefab;
     public Animator anim;
     private CombatRoomController combatRoomController;
+
+    public int Waves { get => waves; set => waves = value; }
+
     void Awake()
     {
         instance = this;
@@ -21,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waves = Random.Range(2, 4);
+        waves = Random.Range(waveMin, waveMax);
         StartWave();
     }
 
@@ -52,14 +60,31 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartWave()
     {
-        numberOfEnemies = Random.Range(4, 8);
+        //First check location be cause we want to spawn further away from the player
+        GameObject closestSpawnPoint = null;
+        float minDistance = float.MaxValue;
+        for(int i = 0; i < spawnLocations.Count; i++)
+        {
+            if ((spawnLocations[i].transform.position - PlayerController.instance.transform.position).sqrMagnitude < minDistance)
+            {
+                closestSpawnPoint = spawnLocations[i];
+                minDistance = (spawnLocations[i].transform.position - PlayerController.instance.transform.position).sqrMagnitude;
+            }
+        }
+
+        spawnLocations.Remove(closestSpawnPoint);
+
+        numberOfEnemies = Random.Range(enemyMin, enemyMax);
         for(int i = 0; i < numberOfEnemies; i++)
         {
-            float spawnX = Random.Range(leftBottom.x, topRight.x);
-            float spawnY = Random.Range(leftBottom.y, topRight.y);
+            GameObject spawnPoint = spawnLocations[Random.Range(0, spawnLocations.Count - 1)];
+            float spawnX = spawnPoint.transform.position.x;
+            float spawnY = spawnPoint.transform.position.y;
+
             EnemyController randEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
             //anim = randEnemy.GetComponentInParent<Animator>();
             //anim.SetTrigger("run");
+
             EnemyController enemy = Instantiate(randEnemy);
             enemy.transform.position = new Vector2(spawnX, spawnY);
             
@@ -67,6 +92,9 @@ public class EnemySpawner : MonoBehaviour
             particles.position = enemy.transform.position;
 
         }
+
+        spawnLocations.Add(closestSpawnPoint);
+
     }
 
 }

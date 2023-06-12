@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public int Speed { get => speed; set => speed = value; }
     public int Attack { get => attack; set => attack = value; }
 
+    public int Defense { get => defense; set => defense = value; }
+
     private void Awake()
     {
         instance = this;
@@ -41,9 +43,9 @@ public class PlayerController : MonoBehaviour
         healthBarController = healthBarObject.GetComponentInChildren<HealthBarController>();
 
         // Stats retrieved from saved values
-        attack = PlayerPrefs.GetInt("attack");
-        defense = PlayerPrefs.GetInt("defense");
-        speed = PlayerPrefs.GetInt("speed");
+        attack = PlayerPrefs.GetInt("Attack");
+        defense = PlayerPrefs.GetInt("Defense");
+        speed = PlayerPrefs.GetInt("Speed");
     }
 
     // Update is called once per frame
@@ -92,7 +94,8 @@ public class PlayerController : MonoBehaviour
         }
 
         timeSinceLastHit = 0f;
-        currentHealth -= damage;
+        //Can't allow players to heal if their defense is too high
+        currentHealth -= (defense >= damage) ? 0 : (damage - defense);
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
         if (currentHealth <= 0)
