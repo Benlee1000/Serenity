@@ -23,9 +23,10 @@ public class PlayerController : MonoBehaviour
     private HealthBarController healthBarController;
     private StatController statController;
 
-    private int attack = 1;
-    private int defense = 1;
-    private int speed = 8;
+
+        private int attack;
+        private int defense;
+        private int speed;
 
     //speed getter and setter
     public int Speed { get => speed; set => speed = value; }
@@ -41,6 +42,11 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         healthBarController = healthBarObject.GetComponentInChildren<HealthBarController>();
         statController = statsObject.GetComponent<StatController>();
+
+        // Stats should be set to saved values
+        attack = 1;
+        defense = 1;
+        speed = 8;
     }
 
     // Update is called once per frame
@@ -116,6 +122,23 @@ public class PlayerController : MonoBehaviour
         timeSinceLastAttack = 0f;
         AttackCenter.SetActive(true);
         anim.SetTrigger("Attack");
+    }
+
+    // Upgrade player stats and update UI
+    public void UpgradeAttack(int newAttack)
+    {
+        attack = attack + newAttack;
+        statController.setAttackText(attack);
+    }
+    public void UpgradeDefense(int newDefense)
+    {
+        defense = defense + newDefense;
+        statController.setDefenseText(defense);
+    }
+    public void UpgradeSpeed(int newSpeed)
+    {
+        speed = speed + newSpeed;
+        statController.setSpeedText(speed);
     }
 
 }

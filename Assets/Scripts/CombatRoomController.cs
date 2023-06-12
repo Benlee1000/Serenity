@@ -12,6 +12,7 @@ public class CombatRoomController : MonoBehaviour
     private PlayerUpgradeController controller;
     private Loader.Scene scene;
     [SerializeField] private GameObject pauseMenuObject;
+    [SerializeField] private GameObject upgradeMenuObject;
     private PauseMenuController pauseMenu;
 
 
@@ -39,7 +40,7 @@ public class CombatRoomController : MonoBehaviour
     // Pass control to the player upgrade controller.
     public void DisplayUpgradeScreen()
     {
-        controller.DisplayCards();
+        upgradeMenuObject.SetActive(true);
     }
 
     // Transitions scene after player picks an upgrade.
