@@ -53,7 +53,9 @@ public class EnemyController : MonoBehaviour
 
         if(hp <= 0)
         {
-            Die();
+            anim.SetBool("enemyDeath", true);
+            Invoke("Die", 1.0f);
+            //Die();
         }
 
     }
@@ -84,7 +86,6 @@ public class EnemyController : MonoBehaviour
 
     public void Die()
     {
-        anim.SetTrigger("enemyDeath");
         Destroy(gameObject);
         EnemySpawner.instance.numberOfEnemies--;
     }
