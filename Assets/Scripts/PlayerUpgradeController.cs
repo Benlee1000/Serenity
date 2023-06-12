@@ -11,9 +11,6 @@ public class PlayerUpgradeController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI defenseUpgradeText;
     [SerializeField] private TextMeshProUGUI seppedUpgradeText;
 
-    [SerializeField] private GameObject player;
-    private PlayerController playerController;
-
     private string[] upgradeStrings = { "Attack +", "Defense +", "Speed +" };
     private int attackVal, defenseVal, speedVal;
 
@@ -28,8 +25,6 @@ public class PlayerUpgradeController : MonoBehaviour
         attackUpgradeText.text = upgradeStrings[0] + attackVal.ToString();
         defenseUpgradeText.text = upgradeStrings[1] + defenseVal.ToString();
         seppedUpgradeText.text = upgradeStrings[2] + speedVal.ToString();
-
-        playerController = player.GetComponent<PlayerController>();
     }
 
     // When button is clicked, the correct stat is upgraded.
@@ -37,7 +32,7 @@ public class PlayerUpgradeController : MonoBehaviour
     public void UpgradeAttack()
     {
         // Upgrade the player's Attack
-        playerController.UpgradeAttack(attackVal);
+        PlayerPrefs.SetInt("Attack", PlayerPrefs.GetInt("Attack") + attackVal);
 
         // Use the loader to find the current scene, then increase it by 1.
         Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
@@ -46,7 +41,7 @@ public class PlayerUpgradeController : MonoBehaviour
     public void UpgradeDefense()
     {
         // Upgrade the player's Defense
-        playerController.UpgradeDefense(defenseVal);
+        PlayerPrefs.SetInt("Defense", PlayerPrefs.GetInt("Defense") + defenseVal);
 
         // Use the loader to find the current scene, then increase it by 1.
         Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
@@ -55,7 +50,7 @@ public class PlayerUpgradeController : MonoBehaviour
     public void UpgradeSpeed()
     {
         // Upgrade the player's Speed
-        playerController.UpgradeSpeed(speedVal);
+        PlayerPrefs.SetInt("Speed", PlayerPrefs.GetInt("Speed") + speedVal);
 
         // Use the loader to find the current scene, then increase it by 1.
         Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));

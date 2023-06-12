@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
     [SerializeField] GameObject healthBarObject;
-    [SerializeField] GameObject statsObject;
     [SerializeField] private Animator anim;
     private float timeSinceLastHit = 0f;
     private float timeSinceLastAttack = 0f;
@@ -21,14 +20,12 @@ public class PlayerController : MonoBehaviour
     // anim is used to trigger the different animations
 
     private HealthBarController healthBarController;
-    private StatController statController;
 
+    private int attack;
+    private int defense;
+    private int speed;
 
-        private int attack;
-        private int defense;
-        private int speed;
-
-    //speed getter and setter
+    //stats getters and setters
     public int Speed { get => speed; set => speed = value; }
     public int Attack { get => attack; set => attack = value; }
 
@@ -41,12 +38,11 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBarController = healthBarObject.GetComponentInChildren<HealthBarController>();
-        statController = statsObject.GetComponent<StatController>();
 
-        // Stats should be set to saved values
-        attack = 1;
-        defense = 1;
-        speed = 8;
+        // Stats retrieved from saved values
+        attack = PlayerPrefs.GetInt("attack");
+        defense = PlayerPrefs.GetInt("defense");
+        speed = PlayerPrefs.GetInt("speed");
     }
 
     // Update is called once per frame
@@ -58,13 +54,6 @@ public class PlayerController : MonoBehaviour
         if(timeSinceLastAttack >= .25f)
         {
             AttackCenter.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //TODO This is for the dash
-            TakeDamage(5);
-            statController.setAttackText(5);
         }
         
         //calculating the proper angle for the attack
@@ -122,23 +111,6 @@ public class PlayerController : MonoBehaviour
         timeSinceLastAttack = 0f;
         AttackCenter.SetActive(true);
         anim.SetTrigger("Attack");
-    }
-
-    // Upgrade player stats and update UI
-    public void UpgradeAttack(int newAttack)
-    {
-        attack = attack + newAttack;
-        statController.setAttackText(attack);
-    }
-    public void UpgradeDefense(int newDefense)
-    {
-        defense = defense + newDefense;
-        statController.setDefenseText(defense);
-    }
-    public void UpgradeSpeed(int newSpeed)
-    {
-        speed = speed + newSpeed;
-        statController.setSpeedText(speed);
     }
 
 }

@@ -17,9 +17,9 @@ public class StatController : MonoBehaviour
     void Start()
     {
         // Stats should be set to saved values
-        AttackText.text = "1";
-        DefenseText.text = "1";
-        SpeedText.text = "8";
+        AttackText.text = PlayerPrefs.GetInt("Attack").ToString();
+        DefenseText.text = PlayerPrefs.GetInt("Defense").ToString();
+        SpeedText.text = PlayerPrefs.GetInt("Speed").ToString();
     }
 
     public void setAttackText(int attack)
