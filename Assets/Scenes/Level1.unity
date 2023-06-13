@@ -12505,6 +12505,18 @@ PrefabInstance:
       propertyPath: playerSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 744465612}
+    - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: healthBarObject
+      value: 
+      objectReference: {fileID: 1845722276}
+    - target: {fileID: 744465611, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2258270312971345815, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -12649,36 +12661,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -418380609142063933, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
 --- !u!1 &744465599 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2258270312971345819, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
   m_PrefabInstance: {fileID: 744465598}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &744465600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 744465599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 835705481c8749b4bb55b6a627aafc3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  healthBarObject: {fileID: 1845722276}
-  anim: {fileID: 744465602}
-  AttackCenter: {fileID: 1967664649}
-  playerCollider: {fileID: 744465614}
-  rb: {fileID: 744465612}
-  dashSpeed: 15
-  dashDuration: 0.25
-  dashCooldown: 0.75
-  dashSlosh: 0.25
 --- !u!95 &744465602 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2258270312971345817, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
@@ -12691,7 +12681,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744465599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c676cfce8c5fc5e44b9aee7663d32dc3, type: 3}
   m_Name: 
@@ -12718,11 +12708,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &744465614 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2258270312971345815, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
-  m_PrefabInstance: {fileID: 744465598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &801542161
 GameObject:
   m_ObjectHideFlags: 0

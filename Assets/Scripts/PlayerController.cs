@@ -100,9 +100,11 @@ public class PlayerController : MonoBehaviour
         }
         //copied from obscura (zachary): feel free to replace with different/better input system
         Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Debug.Log(movementDirection);
         //this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection);
 
         rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed);
+        Debug.Log(speed);
 
         float min = 0.1f;
         if (Mathf.Abs(movementDirection.x) >= min || Mathf.Abs(movementDirection.y) >= min)
