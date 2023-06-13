@@ -152,9 +152,15 @@ public class PlayerController : MonoBehaviour
     public void PlayerAttack()
     {
         timeSinceLastAttack = 0f;
-        AttackCenter.SetActive(true);
         anim.SetTrigger("Attack");
+        StartCoroutine(SetAttackCenter());
 
+    }
+
+    private IEnumerator SetAttackCenter()
+    {
+        AttackCenter.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
     }
 
     //Dash mechanic learned from this video
