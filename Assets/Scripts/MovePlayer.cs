@@ -65,7 +65,7 @@ public class MovePlayer : MonoBehaviour
         }
         playerVel.y+=a*Time.deltaTime;
 
-        float min = 0.2f;
+        float min = 0.1f;
         if (Mathf.Abs(playerVel.x) >= min || Mathf.Abs(playerVel.y) >= min)
         {
             anim.SetInteger("RunSpeed", 1);
