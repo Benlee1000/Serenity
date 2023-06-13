@@ -92,7 +92,6 @@ public class EnemyController : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("We Dyin");
         Destroy(gameObject);
         EnemySpawner.instance.numberOfEnemies--;
     }

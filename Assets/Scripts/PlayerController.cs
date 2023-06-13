@@ -101,7 +101,18 @@ public class PlayerController : MonoBehaviour
         //this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection);
 
         rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed);
-        
+
+        float min = 0.2f;
+        if (Mathf.Abs(movementDirection.x) >= min || Mathf.Abs(movementDirection.y) >= min)
+        {
+            anim.SetInteger("RunSpeed", 1);
+        }
+        else
+        {
+            anim.SetInteger("RunSpeed", 0);
+        }
+
+
         //Dash when player hits space
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
@@ -141,6 +152,7 @@ public class PlayerController : MonoBehaviour
         timeSinceLastAttack = 0f;
         AttackCenter.SetActive(true);
         anim.SetTrigger("Attack");
+
     }
 
     //Dash mechanic learned from this video
@@ -148,7 +160,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash(Vector2 movementDirection)
     {
 
-        Debug.Log("We are in Dash");
         canDash = false;
         isDashing = true;
         playerCollider.enabled = false;
