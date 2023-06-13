@@ -17,12 +17,18 @@ public class CombatRoomController : MonoBehaviour
     [SerializeField] private GameObject loseScreenObject;
     private PauseMenuController pauseMenu;
     private PlayerUpgradeController upgradeMenu;
-
+    public AudioClip DeathNoise;
+    public AudioClip WinNoise;
+    public AudioSource audioSource;
+    private int noisePlayed;
     private void Start()
     {
         Time.timeScale = 1f;
         pauseMenu = pauseMenuObject.GetComponent<PauseMenuController>();
         upgradeMenu = upgradeMenuObject.GetComponent<PlayerUpgradeController>();
+         audioSource=GetComponent<AudioSource>();
+         noisePlayed=0;
+        
     }
     private void Update()
     {
@@ -43,6 +49,10 @@ public class CombatRoomController : MonoBehaviour
         {
             Time.timeScale = 0f;
             DisplayLoseScreen();
+            if(noisePlayed==0){
+                audioSource.PlayOneShot(DeathNoise);
+            }
+            noisePlayed=1;
         }
 
         // Checks general win condition -> Pause time -> Go to upgrades.
@@ -50,6 +60,11 @@ public class CombatRoomController : MonoBehaviour
         {
             Time.timeScale = 0f;
             upgradeMenu.DisplayUpgradeScreen();
+            audioSource.PlayOneShot(WinNoise);
+            if(noisePlayed==0){
+                audioSource.PlayOneShot(WinNoise);
+            }
+            noisePlayed=1;
         }
 
         // Checks general win condition + if its last level -> Pause time -> Go to start screen.

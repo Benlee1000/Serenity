@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
     public int Defense { get => defense; set => defense = value; }
     public float Health { get => currentHealth; set => currentHealth = value; }
 
+    public AudioClip SwingAudio;
+    public AudioClip DashAudio;
+    public AudioClip GetHurt;
+    public AudioClip Die;
+    public AudioSource audioSource;
     private void Awake()
     {
         instance = this;
@@ -52,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBarController = healthBarObject.GetComponentInChildren<HealthBarController>();
-
+        audioSource=GetComponent<AudioSource>();
         // Stats retrieved from saved values
         attack = PlayerPrefs.GetInt("Attack");
         defense = PlayerPrefs.GetInt("Defense");
@@ -85,6 +90,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Fire1") && !AttackCenter.activeSelf)
         {
             PlayerAttack();
+            audioSource.PlayOneShot(SwingAudio,50);
         }
         
         Vector3 mousePos = Input.mousePosition;
@@ -119,6 +125,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash(movementDirection));
+            audioSource.PlayOneShot(DashAudio);
         }
 
     }
@@ -136,6 +143,7 @@ public class PlayerController : MonoBehaviour
         currentHealth -= (defense >= damage) ? 0 : (damage - defense);
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
+        audioSource.PlayOneShot(GetHurt);
         // if (currentHealth <= 0)
         // {
         //     // Call death state or scene or whatever it is.
