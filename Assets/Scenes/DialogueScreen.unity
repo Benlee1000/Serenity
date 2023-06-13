@@ -1082,6 +1082,8 @@ GameObject:
   - component: {fileID: 1669442824}
   - component: {fileID: 1669442823}
   - component: {fileID: 1669442825}
+  - component: {fileID: 1669442827}
+  - component: {fileID: 1669442826}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -1131,11 +1133,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Joe Bean
+    name: Sir Gideon
     sentences:
-    - Dummy sentence 1 about an intro to our wild game about escaping prison.
-    - Dummy sentence 2 about an intro to our wild game about escaping prison.
-    - Dummy sentence 3 about an intro to our wild game about escaping prison.
+    - ... ... ...
+--- !u!114 &1669442826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669442822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2700471929e655749937791930bc6b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Sir Gideon
+    sentences:
+    - 'The royal palace is under attack? '
+    - 
+    - 
+--- !u!114 &1669442827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669442822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2700471929e655749937791930bc6b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Distant Knight
+    sentences:
+    - Ready the Defenses! We're under seige by Monsters!.
 --- !u!1 &1733250270
 GameObject:
   m_ObjectHideFlags: 0
