@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         AttackCenter.transform.localEulerAngles = rotation;
 
         //Attack if left click
-        if (Input.GetButton("Fire1") && !AttackCenter.activeSelf)
+        if (Input.GetButtonDown("Fire1") && !AttackCenter.activeSelf)
         {
             PlayerAttack();
         }

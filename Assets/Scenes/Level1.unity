@@ -12628,7 +12628,7 @@ MonoBehaviour:
   currentHealth: 50
   healthBarObject: {fileID: 1845722276}
   anim: {fileID: 744465602}
-  AttackCenter: {fileID: 1901938256}
+  AttackCenter: {fileID: 1817809271}
   playerCollider: {fileID: 744465614}
   rb: {fileID: 744465612}
   dashSpeed: 15
@@ -15907,6 +15907,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789573710}
   m_CullTransparentMesh: 1
+--- !u!1 &1817809271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7689035917074672762, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+  m_PrefabInstance: {fileID: 744465598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1818589845
 GameObject:
   m_ObjectHideFlags: 0

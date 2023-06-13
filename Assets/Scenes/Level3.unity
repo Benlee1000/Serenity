@@ -14664,6 +14664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+--- !u!1 &462725867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7689035917074672762, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+  m_PrefabInstance: {fileID: 462725866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &467202285
 GameObject:
   m_ObjectHideFlags: 0
@@ -23949,7 +23954,7 @@ MonoBehaviour:
   currentHealth: 50
   healthBarObject: {fileID: 2090027061}
   anim: {fileID: 920095817}
-  AttackCenter: {fileID: 699823794}
+  AttackCenter: {fileID: 462725867}
   playerCollider: {fileID: 920095816}
   rb: {fileID: 920095814}
   dashSpeed: 15
@@ -35556,7 +35561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1954455321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35721,7 +35726,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -82.70621, y: -22.7407}
   m_Pivot: {x: 0.5, y: 0.5}
