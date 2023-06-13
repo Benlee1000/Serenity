@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using System.Threading;
 
 /*
  * Functional state for regular combat room
@@ -15,7 +17,6 @@ public class CombatRoomController : MonoBehaviour
     [SerializeField] private GameObject loseScreenObject;
     private PauseMenuController pauseMenu;
     private PlayerUpgradeController upgradeMenu;
-    private float timeSinceDeath;
 
     private void Start()
     {
@@ -44,7 +45,7 @@ public class CombatRoomController : MonoBehaviour
         }
 
         // Checks general win condition -> Pause time -> Go to upgrades.
-        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0)
+        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0 && PlayerController.instance.transform.position.y > 11f)
         {
             Time.timeScale = 0f;
             upgradeMenu.DisplayUpgradeScreen();
@@ -65,11 +66,6 @@ public class CombatRoomController : MonoBehaviour
         // Using timeSinceDeath as a variable to store time. Player didn't actually die.
         // ***** TIME SCALE SET TO 0 MAY AFFECT TIME.DELTATIME
         // MAY HAVE TO USE SLEEP
-        while (timeSinceDeath <= 5f)
-        {
-            timeSinceDeath += Time.deltaTime;
-        }
-        timeSinceDeath = 0;
 
         Time.timeScale = 1f;
         Loader.Load(Loader.Scene.StartScreen);
@@ -78,14 +74,9 @@ public class CombatRoomController : MonoBehaviour
     public void DisplayLoseScreen()
     {
         loseScreenObject.SetActive(true);
-        while (timeSinceDeath <= 5f)
-        {
-            timeSinceDeath += Time.deltaTime;
-        }
-
-        timeSinceDeath = 0;
-
         Time.timeScale = 1f;
         Loader.Load(Loader.Scene.StartScreen);
+        
+        
     }
 }

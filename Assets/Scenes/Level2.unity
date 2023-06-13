@@ -289,8 +289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuObject: {fileID: 2116566499}
   upgradeMenuObject: {fileID: 598900887}
-  winScreenObject: {fileID: 0}
-  loseScreenObject: {fileID: 0}
+  winScreenObject: {fileID: 573066740}
+  loseScreenObject: {fileID: 575026523}
 --- !u!4 &25450503
 Transform:
   m_ObjectHideFlags: 0
@@ -8658,6 +8658,12 @@ MonoBehaviour:
   healthBarObject: {fileID: 1788247749}
   anim: {fileID: 744465602}
   AttackCenter: {fileID: 1395208959}
+  playerCollider: {fileID: 744465614}
+  rb: {fileID: 744465612}
+  dashSpeed: 20
+  dashDuration: 0.25
+  dashCooldown: 1
+  dashSlosh: 0.25
 --- !u!95 &744465602 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2258270312971345817, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
@@ -8697,6 +8703,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!61 &744465614 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2258270312971345815, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+  m_PrefabInstance: {fileID: 744465598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &829779339
 GameObject:
   m_ObjectHideFlags: 0
