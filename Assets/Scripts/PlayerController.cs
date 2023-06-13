@@ -88,7 +88,9 @@ public class PlayerController : MonoBehaviour
         }
         
         Vector3 mousePos = Input.mousePosition;
-        if (mousePos.x >= (Screen.width/2.0))
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector3 playerPos = this.GetComponentInParent<Transform>().position;
+        if (mousePos.x >= playerPos.x)
         {
             this.GetComponent<SpriteRenderer>().flipX = true;
         } 
