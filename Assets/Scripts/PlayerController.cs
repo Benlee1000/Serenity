@@ -83,11 +83,11 @@ public class PlayerController : MonoBehaviour
         
         //calculating the proper angle for the attack
         Vector3 rotation = AttackCenter.transform.localEulerAngles;
-        rotation.z = Mathf.Atan2(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - AttackCenter.transform.position.y, Camera.main.ScreenToWorldPoint(Input.mousePosition).x - AttackCenter.transform.position.x) * Mathf.Rad2Deg;
+        rotation.z = (Mathf.Atan2(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - AttackCenter.transform.position.y, Camera.main.ScreenToWorldPoint(Input.mousePosition).x - AttackCenter.transform.position.x) * Mathf.Rad2Deg) - 90.0f;
         AttackCenter.transform.localEulerAngles = rotation;
 
         //Attack if left click
-        if (Input.GetButton("Fire1") && !AttackCenter.activeSelf)
+        if (Input.GetButtonDown("Fire1") && !AttackCenter.activeSelf)
         {
             PlayerAttack();
             audioSource.PlayOneShot(SwingAudio,50);
@@ -160,9 +160,15 @@ public class PlayerController : MonoBehaviour
     public void PlayerAttack()
     {
         timeSinceLastAttack = 0f;
-        AttackCenter.SetActive(true);
         anim.SetTrigger("Attack");
+        StartCoroutine(SetAttackCenter());
 
+    }
+
+    private IEnumerator SetAttackCenter()
+    {
+        AttackCenter.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
     }
 
     //Dash mechanic learned from this video

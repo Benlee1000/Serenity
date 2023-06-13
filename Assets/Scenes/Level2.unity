@@ -16439,7 +16439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &728352963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16884,7 +16884,7 @@ MonoBehaviour:
   currentHealth: 50
   healthBarObject: {fileID: 1788247749}
   anim: {fileID: 880123001}
-  AttackCenter: {fileID: 880122998}
+  AttackCenter: {fileID: 2036825026}
   playerCollider: {fileID: 880123000}
   rb: {fileID: 880123005}
   dashSpeed: 15
@@ -25510,7 +25510,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -82.70621, y: -22.7407}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -34489,6 +34489,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033952460}
   m_CullTransparentMesh: 1
+--- !u!1 &2036825026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7689035917074672762, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+  m_PrefabInstance: {fileID: 880122996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2039823341
 GameObject:
   m_ObjectHideFlags: 0
