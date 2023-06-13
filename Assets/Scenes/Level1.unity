@@ -12640,17 +12640,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835705481c8749b4bb55b6a627aafc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  currentHealth: 50
+  maxHealth: 100
+  currentHealth: 100
   healthBarObject: {fileID: 1845722276}
   anim: {fileID: 744465602}
-  AttackCenter: {fileID: 1967664649}
+  AttackCenter: {fileID: 744465601}
   playerCollider: {fileID: 744465614}
   rb: {fileID: 744465612}
   dashSpeed: 15
   dashDuration: 0.25
   dashCooldown: 0.75
   dashSlosh: 0.25
+--- !u!1 &744465601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7689035917074672762, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+  m_PrefabInstance: {fileID: 744465598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &744465602 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2258270312971345817, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
@@ -25147,11 +25152,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963252176}
   m_CullTransparentMesh: 1
---- !u!1 &1967664649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8534661374300700437, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
-  m_PrefabInstance: {fileID: 744465598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1979186654
 GameObject:
   m_ObjectHideFlags: 0
