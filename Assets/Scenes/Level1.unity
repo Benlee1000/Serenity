@@ -12562,6 +12562,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3877535279797331966, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3877535279797331966, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 1
       objectReference: {fileID: 0}
@@ -12579,6 +12583,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5843865238392528791, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025906690769417138, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025906690769417138, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6025906690769417138, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7070821862793723286, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
@@ -12628,7 +12644,7 @@ MonoBehaviour:
   currentHealth: 50
   healthBarObject: {fileID: 1845722276}
   anim: {fileID: 744465602}
-  AttackCenter: {fileID: 1817809271}
+  AttackCenter: {fileID: 1967664649}
   playerCollider: {fileID: 744465614}
   rb: {fileID: 744465612}
   dashSpeed: 15
@@ -15907,11 +15923,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789573710}
   m_CullTransparentMesh: 1
---- !u!1 &1817809271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7689035917074672762, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
-  m_PrefabInstance: {fileID: 744465598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1818589845
 GameObject:
   m_ObjectHideFlags: 0
@@ -25136,6 +25147,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963252176}
   m_CullTransparentMesh: 1
+--- !u!1 &1967664649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8534661374300700437, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+  m_PrefabInstance: {fileID: 744465598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1979186654
 GameObject:
   m_ObjectHideFlags: 0
