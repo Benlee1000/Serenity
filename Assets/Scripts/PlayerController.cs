@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed);
 
-        float min = 0.2f;
+        float min = 0.1f;
         if (Mathf.Abs(movementDirection.x) >= min || Mathf.Abs(movementDirection.y) >= min)
         {
             anim.SetInteger("RunSpeed", 1);
