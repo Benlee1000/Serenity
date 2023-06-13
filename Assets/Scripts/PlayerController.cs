@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     // anim is used to trigger the different animations
 
     private HealthBarController healthBarController;
-    private CombatRoomController combatRoomController;
 
     //Dash Stuff
     [SerializeField] Rigidbody2D rb;
@@ -42,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public int Attack { get => attack; set => attack = value; }
 
     public int Defense { get => defense; set => defense = value; }
+    public float Health { get => currentHealth; set => currentHealth = value; }
 
     private void Awake()
     {
@@ -123,17 +123,17 @@ public class PlayerController : MonoBehaviour
         currentHealth -= (defense >= damage) ? 0 : (damage - defense);
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
-        if (currentHealth <= 0)
-        {
-            // Call death state or scene or whatever it is.
-            // First stop time.
-            Time.timeScale = 0f;
-            combatRoomController.DisplayLoseScreen();
+        // if (currentHealth <= 0)
+        // {
+        //     // Call death state or scene or whatever it is.
+        //     // First stop time.
+        //     Time.timeScale = 0f;
+        //     combatRoomController.DisplayLoseScreen();
             
-            /*//Temporary, we don't actually want to KILL HIM
-            // NOTE: Could deactivate the player instead so the playercontroller doesn't get deleted
-            Destroy(gameObject);*/
-        }
+        //     /*//Temporary, we don't actually want to KILL HIM
+        //     // NOTE: Could deactivate the player instead so the playercontroller doesn't get deleted
+        //     Destroy(gameObject);*/
+        // }
     }
 
     public void PlayerAttack()

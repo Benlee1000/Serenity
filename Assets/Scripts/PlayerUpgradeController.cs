@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -10,6 +12,7 @@ public class PlayerUpgradeController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI attackUpgradeText;
     [SerializeField] private TextMeshProUGUI defenseUpgradeText;
     [SerializeField] private TextMeshProUGUI seppedUpgradeText;
+    [SerializeField] GameObject upgradeMenu;
 
     private string[] upgradeStrings = { "Attack +", "Defense +", "Speed +" };
     private int attackVal, defenseVal, speedVal;
@@ -64,5 +67,9 @@ public class PlayerUpgradeController : MonoBehaviour
         // Use the loader to find the current scene, then increase it by 1.
         Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
 
+    }
+    public void DisplayUpgradeScreen()
+    {
+        upgradeMenu.SetActive(true);
     }
 }

@@ -17,7 +17,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector2 topRight;
     [SerializeField] private Transform ParticlePrefab;
     public Animator anim;
-    private CombatRoomController combatRoomController;
 
     public int Waves { get => waves; set => waves = value; }
 
@@ -42,20 +41,6 @@ public class EnemySpawner : MonoBehaviour
             waves--;
             StartWave();
         } 
-
-        // Checks general win condition -> go to upgrades.
-        else if (numberOfEnemies == 0 && waves <= 0)
-        {
-            Time.timeScale = 0f;
-            combatRoomController.DisplayUpgradeScreen();
-        }
-        
-        // Checks general win condition + if its last level -> go to start screen.
-        else if (numberOfEnemies == 0 && waves <= 0 && Loader.getCurrentScene() == 9)
-        {
-            Time.timeScale = 0f;
-            combatRoomController.DisplayWinScreen();
-        }
     }
 
     public void StartWave()

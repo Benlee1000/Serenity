@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 25450502}
   - component: {fileID: 25450504}
   m_Layer: 0
-  m_Name: State
+  m_Name: Room Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuObject: {fileID: 801542161}
   upgradeMenuObject: {fileID: 1916644914}
-  winScreenObject: {fileID: 0}
-  loseScreenObject: {fileID: 0}
+  winScreenObject: {fileID: 1612437427}
+  loseScreenObject: {fileID: 1563713785}
 --- !u!4 &25450503
 Transform:
   m_ObjectHideFlags: 0
@@ -18811,6 +18811,7 @@ MonoBehaviour:
   attackUpgradeText: {fileID: 1230860007}
   defenseUpgradeText: {fileID: 869594000}
   seppedUpgradeText: {fileID: 412650742}
+  upgradeMenu: {fileID: 1916644914}
 --- !u!1 &1918568703
 GameObject:
   m_ObjectHideFlags: 0
