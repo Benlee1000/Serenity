@@ -291,6 +291,9 @@ MonoBehaviour:
   upgradeMenuObject: {fileID: 598900887}
   winScreenObject: {fileID: 573066740}
   loseScreenObject: {fileID: 575026523}
+  DeathNoise: {fileID: 0}
+  WinNoise: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!4 &25450503
 Transform:
   m_ObjectHideFlags: 0
@@ -16888,6 +16891,11 @@ MonoBehaviour:
   dashDuration: 0.25
   dashCooldown: 0.75
   dashSlosh: 0.25
+  SwingAudio: {fileID: 8300000, guid: bbe51857214d5f54fa70a56542665d34, type: 3}
+  DashAudio: {fileID: 8300000, guid: f989947a9ec6f464487f540b8ca1670e, type: 3}
+  GetHurt: {fileID: 8300000, guid: 4a0e2d258c5f09946821f554307059ab, type: 3}
+  Die: {fileID: 8300000, guid: 568cf9ac96a30a343ba8324bd69beece, type: 3}
+  audioSource: {fileID: 0}
 --- !u!50 &880123004
 Rigidbody2D:
   serializedVersion: 4
