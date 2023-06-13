@@ -63,18 +63,20 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "AttackOuter")
+        {
+            hp -= PlayerController.instance.Attack;
+            healthBar.value = ((float)hp) / ((float)maxHP);
+            anim.SetTrigger("enemyTakeDamage");
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.gameObject.name == "Player")
         {
             isTouchingPlayer = true;
-        }
-
-        if(collision.collider.gameObject.name == "AttackOuter")
-        {
-            hp -= PlayerController.instance.Attack;
-            healthBar.value = ((float)hp)/((float)maxHP);
-            anim.SetTrigger("enemyTakeDamage");
         }
          
     }

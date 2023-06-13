@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /*
@@ -17,10 +18,20 @@ public class PlayerController : MonoBehaviour
     private float timeSinceLastHit = 0f;
     private float timeSinceLastAttack = 0f;
     [SerializeField] private GameObject AttackCenter;
+    [SerializeField] private Collider2D playerCollider;
     // anim is used to trigger the different animations
 
     private HealthBarController healthBarController;
     private CombatRoomController combatRoomController;
+
+    //Dash Stuff
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] float dashSpeed = 20f;
+    [SerializeField] float dashDuration = .25f;
+    [SerializeField] float dashCooldown = 1f;
+    [SerializeField] float dashSlosh = .25f;
+    bool isDashing;
+    bool canDash = true;
 
     private int attack;
     private int defense;
@@ -54,6 +65,12 @@ public class PlayerController : MonoBehaviour
         timeSinceLastAttack += Time.deltaTime;
         timeSinceLastHit += Time.deltaTime;
 
+        //While dashing we can't do anything
+        if(isDashing)
+        {
+            return;
+        }
+
         if(timeSinceLastAttack >= .25f)
         {
             AttackCenter.SetActive(false);
@@ -69,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerAttack();
         }
-
+        
         Vector3 mousePos = Input.mousePosition;
         if (mousePos.x >= (Screen.width/2.0))
         {
@@ -81,7 +98,15 @@ public class PlayerController : MonoBehaviour
         }
         //copied from obscura (zachary): feel free to replace with different/better input system
         Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection);
+        //this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection);
+
+        rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed);
+        
+        //Dash when player hits space
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            StartCoroutine(Dash(movementDirection));
+        }
 
     }
 
@@ -116,6 +141,29 @@ public class PlayerController : MonoBehaviour
         timeSinceLastAttack = 0f;
         AttackCenter.SetActive(true);
         anim.SetTrigger("Attack");
+    }
+
+    //Dash mechanic learned from this video
+    //https://www.youtube.com/watch?v=VWaiU7W5HdE
+    private IEnumerator Dash(Vector2 movementDirection)
+    {
+
+        Debug.Log("We are in Dash");
+        canDash = false;
+        isDashing = true;
+        playerCollider.enabled = false;
+        rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
+        Debug.Log(rb.velocity);
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashSlosh);
+        playerCollider.enabled = true;
+
+        yield return new WaitForSeconds(dashCooldown);
+       
+
+        canDash = true;
     }
 
 }
