@@ -30,4 +30,9 @@ public static class Loader
     {
         return currentScene;
     }
+
+    public static void ResetScene()
+    {
+        currentScene = 0;
+    }
 }
