@@ -20,6 +20,7 @@ public class CombatRoomController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         pauseMenu = pauseMenuObject.GetComponent<PauseMenuController>();
         upgradeMenu = upgradeMenuObject.GetComponent<PlayerUpgradeController>();
     }
@@ -62,21 +63,10 @@ public class CombatRoomController : MonoBehaviour
     public void DisplayWinScreen()
     {
         winScreenObject.SetActive(true);
-        
-        // Using timeSinceDeath as a variable to store time. Player didn't actually die.
-        // ***** TIME SCALE SET TO 0 MAY AFFECT TIME.DELTATIME
-        // MAY HAVE TO USE SLEEP
-
-        Time.timeScale = 1f;
-        Loader.Load(Loader.Scene.StartScreen);
     }
 
     public void DisplayLoseScreen()
     {
         loseScreenObject.SetActive(true);
-        Time.timeScale = 1f;
-        Loader.Load(Loader.Scene.StartScreen);
-        
-        
     }
 }
