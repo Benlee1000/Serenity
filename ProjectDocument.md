@@ -80,11 +80,13 @@ _Dash System_ -The dash system was inspired by [this video](https://www.youtube.
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
-_Animating Sprites and hitboxes_ - For the player character and enemies, we got assets through the Unity Store. For the enemies, I created animations using the sprite for their movement, when they take damage, when they are idle, and their death. I also added hitboxes so that we could register when the enemies collied with the player. For the player, the animations were already created, but I had to add box colliders to the idle, running, take damage, and death animation. The attack animation was only horizontal, so I created a particle effect that would go in the direction that they player attacked in, because the player can attack in any direction. The player and enemies were all made into prefabs which would make it easy to create multiple levels with the same enemies. (add permalinks and links to youtube tutorials)
+The game is of the fantasy genre, so we wanted art that matched that. Also we wanted sprites and assets that matched the ominous, dark tone of the game.
+
+_Animating Sprites and hitboxes_ - For the player character and enemies, we got assets through the Unity Store. For the enemies, I created animations using the sprite for their movement, when they take damage, spawn, when they are idle, and their death. I also added hitboxes so that we could register when the enemies collied with the player. For the player, the animations were already created, but I had to add box colliders to the idle, running, take damage, and death animation. The attack animation was only horizontal, so I created a particle effect that would go in the direction that they player attacked in, because the player can attack in any direction. The player and enemies were all made into prefabs which would make it easy to create multiple levels with the same enemies. I also adjusted the size of the enemies to match their power. An increase in size is generally correlated with more strength, but slower while less size usually means less power, but more speed. The sizes of the enemy help to communicate what "type" they are (the small goblins are weak but move fast, while the Knight are easy to avoid but if they hit you they do a lot of damage). (add permalinks and links to youtube tutorials)
 
 _Animator and adding animations to scripts_ - For the player character and the enemy sprites, I used the animator within Unity to create transitions between the animations. Sprites would initially be in an idle animation state and would transition to different animations based on what happens in the game. To trigger these animations, I created Animator objects within the controller and movement scripts of the player and enemies. These animator objects would be linked to the appropriate prefab in each script. Within the animator, I also had to adjust the transition times between animations to make sure that the transitions were smooth and not jittery.
 
-_Enemy healthbars_ - For the enemies, I created healthbars using the slider UI in Unity.
+_Enemy healthbars_ - For the enemies, I created healthbars using the slider UI in Unity. Within the enemy controller script if the enemy got attacked by the player, I adjusted the healthbar value to match the HP of the enemy. Healthbars give the player an idea of how close an enemy is to dying and also gives them a feel for how poweful their character is. In the beginning, each attack only takes off a small fraction of an enemy's healthbar. But, if you upgrade your attack, you can see how much more damage you deal with a single attack.
 
 _Asset Credits_ -
 
@@ -128,9 +130,7 @@ In theory, coding state transitions seemed relatiely simple, however as the game
 **Summarize the key findings from your gameplay tests.**
 I didn’t have time to interview 10 people to test out the game, however during the game demo, I was able to get a hold of someone to play test and give me feedback of our game. After explaining the basic movement and controls, I let the player go free in playing the game without interrupting. After they finished the game, I asked them a couple of questions in the [game testing pdf](https://docs.google.com/document/d/1itomTK0TprLcbF0yv7M-vQmB3NAFYdXZ213846b0qp8/edit?usp=sharing). The main takeaways were that the gameplay felt good however they wished for a couple of changes. The main one being that there should be an instructional screen to show how to play the game. The game wasn’t complete at this point, as there were only 4 levels and the last couple of levels were bugged but it was still good feedback.
 
-After fixing a lot of the changes and we finalized the game, I had my roommate play test the game and give some feedback. I followed the same process as the first interviewee and let him play the game. After his play through, he gave me some feedback and I noted his observations down in the [game testing pdf](https://docs.google.com/document/d/1itomTK0TprLcbF0yv7M-vQmB3NAFYdXZ213846b0qp8/edit?usp=sharing). His takeaways were that the game felt really polished and complete however he wished that there was a climactic boss fight after beating so many minions. The levels got kinda old fast because they were all the same concept, however he understands that given the time constraint that we didn’t have time. 
-
-
+After fixing a lot of the changes and we finalized the game, I had my roommate play test the game and give some feedback. I followed the same process as the first interviewee and let him play the game. After his play through, he gave me some feedback and I noted his observations down in the [game testing pdf](https://docs.google.com/document/d/1itomTK0TprLcbF0yv7M-vQmB3NAFYdXZ213846b0qp8/edit?usp=sharing). His takeaways were that the game felt really polished and complete however he wished that there was a climactic boss fight after beating so many minions. The levels got kinda old fast because they were all the same concept, however he understands that given the time constraint that we didn’t have time.
 
 ## Ty Hewitt: Narrative Design
 
@@ -146,11 +146,15 @@ I had originally been very confident that I could weave in the narrative into th
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.**
 
-## Press Kit and Trailer
+## Press Kit and Trailer - Rohith Saravana
 
 **Include links to your presskit materials and trailer.**
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
+
+_Trailer_ -
+
+_Screenshots_ -
 
 ## Ben Lee: Game Feel
 
