@@ -33,8 +33,21 @@ You should replay any **bold text** with your relevant information. Liberally us
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanism, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, depedency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
 ## User Interface
+_sprites_ - Nearly all sprites for UI were taken from this free [asset pack](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086).
 
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
+_menus_ - I created the start menu, pause menu, and options menu. All of these menus have buttons which change sprites when clicking them for a more satisfying user experience. The start menu has a sunset background to set the scene for the game. It has a play button which initiates the opening dialogue screen. Additionally, it has an options button which opens an option menu. Underneath that is a quit button to exit the game. Finally is the help button which opens up a panel, teaching the user how to play. The pause menu has a resume, options, and quit button which returns you to the main menu. It also pauses the entire game by setting the time scale to 0 and creates a white semi-transparent background to indicate the game is paused. Lastly is the options menu. This menu has 2 sliders which are attached to music and sfx volume in our volume mixer so that the user's choices persist across scenes. The volume controller converts these slider values to fit into a log scale so that 1/2 of a volume slider actually represents 1/2 of loudness of that sound. It also has an accept button to go back to the previous menu.
+
+_stats panel_ - I created a stats panel which holds the user's current stats. These stats are stored using PlayerPrefs so they can persist across scenes. The panel also has icons indicating the 3 stats - attack, defense, and speed. Finally, the stats panel has a health bar attached to the player's health.
+
+_upgrade menu_ - I created the upgrade menu, which has an upgrade for attack, defense, or speed. Each of these values is set randomly (min and max were set carefully in gameplay testing). The text is overlayed on an arrow shape pointing to the button to unlock the upgrade to minimize confusion on where to click. The unlock buttons change when you hover over them and when you select them. After selecting the upgrade, it is added to your stats (both visually and in the player controller) and the next level is loaded.
+
+_win and lose screen_ - These screens both have a colored background to indicate the state of the game, red for losing and green for winning. The lose screen is triggered by having 0 health and has an accept button to bring you back to the main menu. The win screen is triggered by beating every wave in the last level and has an accept button to progress the scene to the ending dialgoue scene.
+
+_dialgoue scenes_ - There are two dialogue scenes, one at the start of the game before level 1 and one after the final level. Each has a corresponding background image, with the ending dialogue being bright and sunny to emphasize your win. Both have several scripts attached to allow for the narrative designer to easily input as many dialgoue sentences as desired along with a corresponding name for that dialogue. The dialgoue is shown one letter at a time to emulate speech. Additionally, it can be advanced through clicking anywhere on the screen. The dialgoue can be spam-clicked through in case someone just wants to quickly play the game. After the final line is displayed, the next scene is loaded or the main menu is loaded if we are on the closing dialgoue screen.
+
+_door indicator_ - the door indicator is a semi-transparent spinning triangle that is displayed when all enemies are killed in the level. This minimizes player confusion on where to go once the level is complete. 
+
+
 
 ## Movement/Physics
 
@@ -60,7 +73,7 @@ _Source Credits_ -
 
 **Add an entry for each platform or input style your project supports.**
 
-## Game Logic - Ahram Ham
+## Game Logic
 
 General Game Logic:
 For general game logic, the majority of my work was determining and implementing how the game should run. Most of this work was determing how scenes should be organized, when certain screens should show up, and implementing state transitions. Since a lot of the main roles intersected with the subroles, I moved past the Game logic role and helped out wherever was needed. This ended up being the form of working on level design and how enemies and players could interact with the world. 
