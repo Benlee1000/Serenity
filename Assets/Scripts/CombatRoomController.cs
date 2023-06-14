@@ -49,11 +49,14 @@ public class CombatRoomController : MonoBehaviour
         if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0 && PlayerController.instance.transform.position.y > 11f)
         {
             Time.timeScale = 0f;
-            upgradeMenu.DisplayUpgradeScreen();
+            if(Loader.GetCurrentScene() != 8)
+            {
+                upgradeMenu.DisplayUpgradeScreen();
+            }
         }
 
         // Checks general win condition + if its last level -> Pause time -> Go to start screen.
-        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0 && Loader.getCurrentScene() == 9)
+        if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0 && Loader.GetCurrentScene() == 8)
         {
             Time.timeScale = 0f;
             DisplayWinScreen();

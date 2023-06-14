@@ -26,13 +26,8 @@ public static class Loader
         SceneManager.LoadScene(scene.ToString());
     }
 
-    public static int getCurrentScene()
+    public static int GetCurrentScene()
     {
         return currentScene;
-    }
-
-    public static void ResetScene()
-    {
-        currentScene = 0;
     }
 }

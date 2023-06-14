@@ -11,7 +11,7 @@ public class MainMenuController : MonoBehaviour
 {
     public void PlayGame()
     {
-        Loader.ResetScene();
+        Time.timeScale = 1f;
         Loader.Load(Loader.Scene.DialogueScreen);
     }
 
