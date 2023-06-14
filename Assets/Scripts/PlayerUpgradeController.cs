@@ -18,11 +18,11 @@ public class PlayerUpgradeController : MonoBehaviour
 
     private void Start()
     {
-        // Set attack, defense, speed upgrades from 1-5
-        // Can be changed later to implement scaling
-        attackVal = Random.Range(1, 6);
-        defenseVal = Random.Range(1, 6);
-        speedVal = Random.Range(1, 6);
+        // Set attack, defense, speed upgrades randomly
+        // Implements scaling based on level
+        attackVal = Random.Range(Loader.GetCurrentScene() / 2 + 1, Loader.GetCurrentScene());
+        defenseVal = Random.Range(Loader.GetCurrentScene() + 1, Loader.GetCurrentScene() + 3);
+        speedVal = Random.Range(Loader.GetCurrentScene() / 2, Loader.GetCurrentScene() + 2);
 
         attackUpgradeText.text = upgradeStrings[0] + attackVal.ToString();
         defenseUpgradeText.text = upgradeStrings[1] + defenseVal.ToString();

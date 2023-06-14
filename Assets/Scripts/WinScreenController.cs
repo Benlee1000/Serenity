@@ -7,9 +7,9 @@ using UnityEngine;
  */
 public class WinScreenController : MonoBehaviour
 {    
-    public void GoToMainMenu()
+    public void GoToNextScreen()
     {
         Time.timeScale = 1f;
-        Loader.Load(Loader.Scene.StartScreen);
+        Loader.Load((Loader.Scene)(Loader.GetCurrentScene() + 1));
     }
 }

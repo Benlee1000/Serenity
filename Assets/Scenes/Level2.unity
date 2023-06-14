@@ -23241,7 +23241,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 7072987429634312644, guid: 52cda1c52e74264488ecad9cb1d356f1, type: 3}
-  - {fileID: 4533022994398715966, guid: 51b9b80280d765446a0822420f122e14, type: 3}
   - {fileID: 4364561360098374267, guid: 48521b77f2f0f6d4ab27fef63ce35612, type: 3}
   spawnLocations:
   - {fileID: 387238660}
@@ -23253,8 +23252,8 @@ MonoBehaviour:
   - {fileID: 694032173}
   waveMin: 2
   waveMax: 4
-  enemyMin: 2
-  enemyMax: 4
+  enemyMin: 3
+  enemyMax: 5
   numberOfEnemies: 0
   leftBottom: {x: -18, y: -8}
   topRight: {x: 18, y: 8}
@@ -24347,7 +24346,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 593778485}
         m_TargetAssemblyTypeName: WinScreenController, Assembly-CSharp
-        m_MethodName: GoToMainMenu
+        m_MethodName: GoToNextScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

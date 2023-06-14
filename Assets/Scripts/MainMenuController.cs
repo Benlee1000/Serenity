@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1f;
-        Loader.Load(Loader.Scene.DialogueScreen);
+        Loader.Load(Loader.Scene.OpeningDialogue);
     }
 
     public void QuitGame()

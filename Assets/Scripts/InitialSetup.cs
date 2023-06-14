@@ -9,8 +9,8 @@ public class InitialSetup : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.SetInt("Attack", 1);
-        PlayerPrefs.SetInt("Defense", 1);
-        PlayerPrefs.SetInt("Speed", 8);
+        PlayerPrefs.SetInt("Attack", 5);
+        PlayerPrefs.SetInt("Defense", 5);
+        PlayerPrefs.SetInt("Speed", 5);
     }
 }

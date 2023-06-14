@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if(timeSinceLastAttack >= .25f)
+        if(timeSinceLastAttack >= .33f)
         {
             AttackCenter.SetActive(false);
         }
@@ -131,7 +131,8 @@ public class PlayerController : MonoBehaviour
 
         timeSinceLastHit = 0f;
         // Can't allow players to heal if their defense is too high
-        currentHealth -= (defense >= damage) ? 0 : (damage - defense);
+        // Also set minimum damage so you can't just facetank every enemy
+        currentHealth -= (defense - damage > -5) ? 5 : (damage - defense);
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
         // if (currentHealth <= 0)

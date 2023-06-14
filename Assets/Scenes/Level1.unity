@@ -10734,16 +10734,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 7072987429634312644, guid: 52cda1c52e74264488ecad9cb1d356f1, type: 3}
-  - {fileID: 4364561360098374267, guid: 48521b77f2f0f6d4ab27fef63ce35612, type: 3}
   spawnLocations:
   - {fileID: 811722963}
   - {fileID: 1837521259}
   - {fileID: 2060037337}
   - {fileID: 1438623937}
   waveMin: 2
-  waveMax: 4
+  waveMax: 3
   enemyMin: 2
-  enemyMax: 4
+  enemyMax: 3
   numberOfEnemies: 0
   leftBottom: {x: -18, y: -8}
   topRight: {x: 18, y: 8}
@@ -11795,7 +11794,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1612437432}
         m_TargetAssemblyTypeName: WinScreenController, Assembly-CSharp
-        m_MethodName: GoToMainMenu
+        m_MethodName: GoToNextScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12510,6 +12509,14 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 744465612}
+    - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
       propertyPath: healthBarObject
       value: 

@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScreen.unity
     guid: 527a926d375f87943ac5b91afc32f9f7
   - enabled: 1
-    path: Assets/Scenes/DialogueScreen.unity
-    guid: 6983395f71519134f8e8c088c63ba9e9
+    path: Assets/Scenes/OpeningDialogue.unity
+    guid: e2093bd274407e949b1a45d16f7af001
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level6.unity
     guid: 232b2eb660641b44eb99e210976dd102
+  - enabled: 1
+    path: Assets/Scenes/ClosingDialogue.unity
+    guid: 6983395f71519134f8e8c088c63ba9e9
   m_configObjects: {}

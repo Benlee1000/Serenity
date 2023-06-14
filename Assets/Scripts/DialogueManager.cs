@@ -70,7 +70,15 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         Debug.Log("End of conversation");
-        Loader.Load(Loader.Scene.Level1);
+
+        // End of game, load start screen again
+        if (Loader.GetCurrentScene() > 1)
+        {
+            Loader.Load(Loader.Scene.StartScreen);
+            return;
+        }
+
+        Loader.Load((Loader.Scene)(Loader.GetCurrentScene() + 1));
     }
 
 }

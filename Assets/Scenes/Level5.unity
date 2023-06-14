@@ -5279,10 +5279,10 @@ MonoBehaviour:
   - {fileID: 1484056146}
   - {fileID: 797378395}
   - {fileID: 65734092}
-  waveMin: 2
+  waveMin: 3
   waveMax: 4
-  enemyMin: 3
-  enemyMax: 6
+  enemyMin: 7
+  enemyMax: 9
   numberOfEnemies: 0
   leftBottom: {x: -18, y: -8}
   topRight: {x: 18, y: 8}
@@ -47064,7 +47064,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1635314667}
         m_TargetAssemblyTypeName: WinScreenController, Assembly-CSharp
-        m_MethodName: GoToMainMenu
+        m_MethodName: GoToNextScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

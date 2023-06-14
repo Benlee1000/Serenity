@@ -67,7 +67,10 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.name == "verticalComp")
         {
-            hp -= PlayerController.instance.Attack;
+            // Don't allow enemies to heal if defense too high
+            // Enemies must take minimum damage
+            hp -= (defense - PlayerController.instance.Attack > -2) ? 2 : (PlayerController.instance.Attack - defense);
+
             healthBar.value = ((float)hp) / ((float)maxHP);
             anim.SetTrigger("enemyTakeDamage");
         }
