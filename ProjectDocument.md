@@ -169,6 +169,8 @@ The background music was chosen because of how it fit the spooky yet calm theme 
 ### Controls:
 Music and sound effect volume can be separately changed to be louder or quieter in pause menu (see UI for more information)
 
+### Link:
+https://github.com/Benlee1000/Serenity/blob/48891ba58497a97e42c7bd1e57785512ab4be5d3/Assets/Scripts/PlayerController.cs#LL40C36-L40C36
 
 ## Ahram Ham : Gameplay Testing
 
