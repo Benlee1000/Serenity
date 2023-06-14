@@ -41,7 +41,7 @@ public class PlayerUpgradeController : MonoBehaviour
         Time.timeScale = 1f;
 
         // Use the loader to find the current scene, then increase it by 1.
-        Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
+        Loader.Load((Loader.Scene)(Loader.GetCurrentScene() + 1));
         
     }
     public void UpgradeDefense()
@@ -53,7 +53,7 @@ public class PlayerUpgradeController : MonoBehaviour
         Time.timeScale = 1f;
 
         // Use the loader to find the current scene, then increase it by 1.
-        Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
+        Loader.Load((Loader.Scene)(Loader.GetCurrentScene() + 1));
 
     }
     public void UpgradeSpeed()
@@ -65,7 +65,7 @@ public class PlayerUpgradeController : MonoBehaviour
         Time.timeScale = 1f;
 
         // Use the loader to find the current scene, then increase it by 1.
-        Loader.Load((Loader.Scene)(Loader.getCurrentScene() + 1));
+        Loader.Load((Loader.Scene)(Loader.GetCurrentScene() + 1));
 
     }
     public void DisplayUpgradeScreen()
