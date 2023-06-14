@@ -70,7 +70,7 @@ _Stats_ -Both the player and enemies have four basic stats: HP, Attack, Defense,
 
 _Dash System_ -The dash system was inspired by [this video](https://www.youtube.com/watch?v=VWaiU7W5HdE). I essentially implemented the same dash as this video, with very minor tweaks. When the player presses down on the space bar, the player dashes in the movement they are currently moving in. There is a dash duration, speed, and cooldown all of which are serialized fields. The parts I personally added in was disabling the playerCollider while dashing so that the player can dash through enemies, and dashSlosh which represents the amount of IFrames the player gets. The dash method can be found [here](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/PlayerController.cs#L168) in the PlayerController.
 
-## Movement/Physics
+## Zachary Graeber: Movement/Physics
 ### Movement:
 #### Summary:
 
