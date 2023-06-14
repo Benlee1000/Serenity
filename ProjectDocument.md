@@ -118,7 +118,7 @@ Both the player and enemies are able to push each other as Rigidbodies. Addition
 ### Link
 https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/Assets/Scripts/MovePlayer.cs#LL7C1-L7C1
 
-## Animation and Visuals - Rohith Saravana
+## Rohith Saravana: Animation and Visuals
 
 **List your assets including their sources and licenses.**
 
@@ -126,19 +126,19 @@ https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f3
 
 The game is of the fantasy genre, so we wanted art that matched that. Also we wanted sprites and assets that matched the ominous, dark tone of the game.
 
-_Animating Sprites and hitboxes_ - For the player character and enemies, we got assets through the Unity Store. For the enemies, I created animations using the sprite for their movement, when they take damage, spawn, when they are idle, and their death. I also added hitboxes so that we could register when the enemies collied with the player. For the player, the animations were already created, but I had to add box colliders to the idle, running, take damage, and death animation. The attack animation was only horizontal, so I created a particle effect that would rotate in the direction that they player attacked in, because the player can attack in any direction. The player and enemies were all made into prefabs which would make it easy to create multiple levels with the same enemies. I also adjusted the size of the enemies to match their power. An increase in size is generally correlated with more strength, but slower while less size usually means less power, but more speed. The sizes of the enemy help to communicate what "type" they are (the small goblins are weak but move fast, while the Knight are easy to avoid but if they hit you they do a lot of damage). For creating animations from sprite sheets, I found this [tutorial](https://www.youtube.com/watch?v=FXXc0hTWIMs&list=WL&index=4) very helpful. Also this (tutorial)[https://www.youtube.com/watch?v=_z68_OoC_0o&list=WL&index=10] was a good introduction with how to manipulate particle effects, which are pretty complicated.
+_Animating Sprites and hitboxes_ - For the player character and enemies, we got assets through the Unity Store. For the enemies, I created animations using the sprite for their movement, when they take damage, spawn, when they are idle, and their death. I also added hitboxes so that we could register when the enemies collied with the player. For the player, the animations were already created, but I had to add box colliders to the idle, running, take damage, and death animation. The attack animation was only horizontal, so I created a particle effect that would rotate in the direction that they player attacked in, because the player can attack in any direction. The player and enemies were all made into prefabs which would make it easy to create multiple levels with the same enemies. I also adjusted the size of the enemies to match their power. An increase in size is generally correlated with more strength, but slower while less size usually means less power, but more speed. The sizes of the enemy help to communicate what "type" they are (the small goblins are weak but move fast, while the Knight are easy to avoid but if they hit you they do a lot of damage). For creating animations from sprite sheets, I found this [tutorial](https://www.youtube.com/watch?v=FXXc0hTWIMs&list=WL&index=4) very helpful. Also this [tutorial](https://www.youtube.com/watch?v=_z68_OoC_0o&list=WL&index=10) was a good introduction with how to manipulate particle effects, which are pretty complicated.
 
 _Animator and adding animations to scripts_ - For the player character and the enemy sprites, I used the animator within Unity to create transitions between the animations. Sprites would initially be in an idle animation state and would transition to different animations based on what happens in the game. For example if the player collided with an enemy, the take damage animation triggerd or if the player attacks, then the [attack animation](https://github.com/Benlee1000/Serenity/blob/4596dbc9367e7251e871514378fa052665797ce3/Assets/Scripts/PlayerController.cs#LL110C12-L110C12) triggered. To trigger these animations, I created Animator objects within the controller and movement scripts of the player and enemies. These animator objects would be linked to the appropriate prefab in each script. Within the animator, I also had to adjust the transition times between animations to make sure that the transitions were smooth and not jittery.
 
-_Enemy healthbars_ - For the enemies, I created healthbars using the slider UI in Unity. Within the enemy controller script if the enemy got attacked by the player, I adjusted the healthbar value to match the HP of the (enemy)[https://github.com/Benlee1000/Serenity/blob/b1824bf698920a2b6c723a9267ee4895dd6e525b/Assets/Scripts/EnemyController.cs#L74]. Healthbars give the player an idea of how close an enemy is to dying and also gives them a feel for how poweful their character is. In the beginning, each attack only takes off a small fraction of an enemy's healthbar. But, if you upgrade your attack, you can see how much more damage you deal with a single attack. I also adjusted the size of the healthbar to match enemy sizes. This (video)[https://www.youtube.com/watch?v=ZYeXmze5gxg&list=WL&index=22] helped me learn how to make and adjust the healthbars.
+_Enemy healthbars_ - For the enemies, I created healthbars using the slider UI in Unity. Within the enemy controller script if the enemy got attacked by the player, I adjusted the healthbar value to match the HP of the [enemy](https://github.com/Benlee1000/Serenity/blob/b1824bf698920a2b6c723a9267ee4895dd6e525b/Assets/Scripts/EnemyController.cs#L74). Healthbars give the player an idea of how close an enemy is to dying and also gives them a feel for how poweful their character is. In the beginning, each attack only takes off a small fraction of an enemy's healthbar. But, if you upgrade your attack, you can see how much more damage you deal with a single attack. I also adjusted the size of the healthbar to match enemy sizes. This [video](https://www.youtube.com/watch?v=ZYeXmze5gxg&list=WL&index=22) helped me learn how to make and adjust the healthbars.
 
 _Asset Credits_ -
-Bandits - Pixel Art, Sven Thole [unity store](https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130)
-Free animated warrior with sample environment, Baltic Cortex [unity store](https://assetstore.unity.com/packages/2d/characters/free-animated-warrior-242585)
-Monsters Creatures Fantasy, Luiz Melo [unity store](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949)
-Pixel Art Icon pack - RPG, Cainos, [unity store](https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-icon-pack-rpg-158343)
-RF Castle, Szadi Art. [unity store](https://assetstore.unity.com/packages/2d/environments/rogue-fantasy-castle-164725)
-RPG&Fantasy Mobile GUI, bonk! [unity store](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086)
+* Bandits - Pixel Art, Sven Thole [unity store](https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130)
+* Free animated warrior with sample environment, Baltic Cortex [unity store](https://assetstore.unity.com/packages/2d/characters/free-animated-warrior-242585)
+* Monsters Creatures Fantasy, Luiz Melo [unity store](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949)
+* Pixel Art Icon pack - RPG, Cainos, [unity store](https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-icon-pack-rpg-158343)
+* RF Castle, Szadi Art. [unity store](https://assetstore.unity.com/packages/2d/environments/rogue-fantasy-castle-164725)
+* RPG&Fantasy Mobile GUI, bonk! [unity store](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086)
 
 ## Ahram Ham : Game Logic
 
@@ -212,15 +212,15 @@ I had originally been very confident that I could weave in the narrative into th
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.**
 
-## Press Kit and Trailer - Rohith Saravana
+## Rohith Saravana: Press Kit and Trailer
 
 **Include links to your presskit materials and trailer.**
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 
-_Screenshots_ -
-[level 1](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level1.jpg)
-[level 4](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level4.jpg)
+_Screenshots_
+* [level 1](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level1.jpg)
+* [level 4](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level4.jpg)
 The game does not drastically differ between levels in terms of gameplay, so I chose two different levels that showcase how different areas have different themes and different visuals.
 
 _Trailer_ - [Trailer](https://github.com/Benlee1000/Serenity/blob/c63f12c366e412a440cef1481b2f46c220c65d25/pressKit/Serenity_game_trailer.mp4)
@@ -233,8 +233,6 @@ Music promoted by BreakingCopyright:
 https://youtu.be/9gBTKiVqprE
 
 Title Art - [Medieval Castle Background, Mokazar](https://www.deviantart.com/mokazar/art/Medieval-Castle-Background-PixelArt-866682698)
-
-_Screenshots_ -
 
 ## Ben Lee: Game Feel
 
