@@ -1,7 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Creates enemy prefabs with a random number of waves.
+ * Makes sure they spawn away from player and on screen.
+ */
 public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner instance;
@@ -81,5 +84,4 @@ public class EnemySpawner : MonoBehaviour
         spawnLocations.Add(closestSpawnPoint);
 
     }
-
 }

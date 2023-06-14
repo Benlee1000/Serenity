@@ -5,7 +5,6 @@ using TMPro;
 
 /*
  * Adds button functionality for the upgrade menu
- * 
  */
 public class PlayerUpgradeController : MonoBehaviour
 {

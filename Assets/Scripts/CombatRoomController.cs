@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System;
-using System.Threading;
 
 /*
  * Functional state for regular combat room
- * 
  */
 public class CombatRoomController : MonoBehaviour
 {
@@ -15,14 +9,17 @@ public class CombatRoomController : MonoBehaviour
     [SerializeField] private GameObject upgradeMenuObject;
     [SerializeField] private GameObject winScreenObject;
     [SerializeField] private GameObject loseScreenObject;
+    [SerializeField] private GameObject doorMarkerObject;
     private PauseMenuController pauseMenu;
     private PlayerUpgradeController upgradeMenu;
     private bool upgrading;
+    private bool doorMarked;
 
     private void Start()
     {
         Time.timeScale = 1f;
         upgrading = false;
+        doorMarked = false;
         pauseMenu = pauseMenuObject.GetComponent<PauseMenuController>();
         upgradeMenu = upgradeMenuObject.GetComponent<PlayerUpgradeController>();
     }
@@ -47,6 +44,13 @@ public class CombatRoomController : MonoBehaviour
             DisplayLoseScreen();
         }
 
+        // Mark the door when all waves defeated, only set it active once
+        if (!doorMarked && EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0)
+        {
+            doorMarkerObject.SetActive(true);
+            doorMarked = true;
+        }
+
         // Checks general win condition -> Pause time -> Go to upgrades.
         // Avoided if last level
         if (EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0 && PlayerController.instance.transform.position.y > 11f)
@@ -66,8 +70,6 @@ public class CombatRoomController : MonoBehaviour
             Time.timeScale = 0f;
             DisplayWinScreen();
         }
-
-
     }    
 
     public void DisplayWinScreen()

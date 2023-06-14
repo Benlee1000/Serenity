@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Manages the pause menu UI panel
+ * Freezes the game on pause
+ */
 public class PauseMenuController : MonoBehaviour
 {
     // Learned how to do a PauseMenu from https://www.youtube.com/watch?v=9dYDBomQpBQ

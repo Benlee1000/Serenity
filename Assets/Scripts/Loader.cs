@@ -1,5 +1,8 @@
 using UnityEngine.SceneManagement;
 
+/* 
+ * Loads the desired scene and stores current scene
+ */
 public static class Loader
 {
     private static int currentScene = 0;
