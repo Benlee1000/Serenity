@@ -71,7 +71,9 @@ _Stats_ -Both the player and enemies have four basic stats: HP, Attack, Defense,
 _Dash System_ -The dash system was inspired by [this video](https://www.youtube.com/watch?v=VWaiU7W5HdE). I essentially implemented the same dash as this video, with very minor tweaks. When the player presses down on the space bar, the player dashes in the movement they are currently moving in. There is a dash duration, speed, and cooldown all of which are serialized fields. The parts I personally added in was disabling the playerCollider while dashing so that the player can dash through enemies, and dashSlosh which represents the amount of IFrames the player gets. The dash method can be found [here](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/PlayerController.cs#L168) in the PlayerController.
 
 ## Zachary Graeber: Movement/Physics
+
 ### Movement:
+
 #### Summary:
 
 The movement in the game goes well beyond the basic "move in the direction of the inputs" mechanics.
@@ -79,29 +81,35 @@ The movement in the game goes well beyond the basic "move in the direction of th
 Instead it is based in balance a mix of realism, smoothness, and playability, where the the inputs relate to acceleration, and acceleration is slower at high speeds. The player can use the WASD or Arrow Keys to control the character movement (see Input section for more information)
 
 #### Technical Description:
+
 Input in this game was linked to acceleration rather than velocity.
 
 Accelerating in direction of movement:
-The velocity curve is modeled by the equation velocity=maxspeed(1-e^(sharpness*time)), where sharpness is generally related to how powerful the acceleration force is.
+The velocity curve is modeled by the equation velocity=maxspeed(1-e^(sharpness\*time)), where sharpness is generally related to how powerful the acceleration force is.
 
-Time is how long it has been accelerating from 0, assuming the input button has been held the whole time. However, this isn't always the case (the player will usually choose to change their input while the character is still moving). To remedy this, I found the derivative of the velocity curve and then put it in terms of velocity giving a=dv/dt=(maxspeed-velocity)*sharpness. Essentially what this means is that the player accelerates very quickly when moving slow, but accelerates much slower when already near maximum speed.
+Time is how long it has been accelerating from 0, assuming the input button has been held the whole time. However, this isn't always the case (the player will usually choose to change their input while the character is still moving). To remedy this, I found the derivative of the velocity curve and then put it in terms of velocity giving a=dv/dt=(maxspeed-velocity)\*sharpness. Essentially what this means is that the player accelerates very quickly when moving slow, but accelerates much slower when already near maximum speed.
 
-Here is a graph: Green = maxSpeed,  Red = velocity,  Blue = acceleration
+Here is a graph: Green = maxSpeed, Red = velocity, Blue = acceleration
 
 #### Active deceleration:
-When the player is actively decelerating (eg. pressing ← when moving right), the player decelerates at a linear rate equal to maxspeed*sharpness, which is the same as the acceleration when velocity=0
+
+When the player is actively decelerating (eg. pressing ← when moving right), the player decelerates at a linear rate equal to maxspeed\*sharpness, which is the same as the acceleration when velocity=0
 
 #### Passive deceleration:
+
 When the player is passively decelerating (is no longer pressing any buttons but still has inertia), the player follows the curve glideMultiplier*velocity*sharpness, where glideMultiplier is a constant ≤1. Effectively the player decelerates fairly quickly when near full speed, but decelerate slowly when the character is moving very slowly.
 
 #### Visualization
+
 Graphical representation: ( ← pressed during yellow, → pressed during red/green, nothing pressed during blue)
 Solid line represents velocity, Dashed line represents acceleration
 
 #### Multi Dimensional movement:
+
 Both axes were handled fairly independently. However when the player inputs in both the x and y dimensions, most of the variables are temporarily nerfed, with a 0.75 multiplier. This is to prevent the player from being faster when moving diagonally. Even with the nerf, moving diagonally is still 6% faster, but that is balanced by the inefficiencies of moving diagonally in a grid-like map.
 
 ### Collisions with entities and obstacles/walls:
+
 Both the player and enemies are able to push each other as Rigidbodies. Additionally, obstacles and walls will prevent the player from passing through, and even rubbing against them causes some friction
 
 ## Animation and Visuals - Rohith Saravana
@@ -119,6 +127,12 @@ _Animator and adding animations to scripts_ - For the player character and the e
 _Enemy healthbars_ - For the enemies, I created healthbars using the slider UI in Unity. Within the enemy controller script if the enemy got attacked by the player, I adjusted the healthbar value to match the HP of the (enemy)[https://github.com/Benlee1000/Serenity/blob/b1824bf698920a2b6c723a9267ee4895dd6e525b/Assets/Scripts/EnemyController.cs#L74]. Healthbars give the player an idea of how close an enemy is to dying and also gives them a feel for how poweful their character is. In the beginning, each attack only takes off a small fraction of an enemy's healthbar. But, if you upgrade your attack, you can see how much more damage you deal with a single attack. I also adjusted the size of the healthbar to match enemy sizes. This (video)[https://www.youtube.com/watch?v=ZYeXmze5gxg&list=WL&index=22] helped me learn how to make and adjust the healthbars.
 
 _Asset Credits_ -
+Bandits - Pixel Art, Sven Thole [unity store](https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130)
+Free animated warrior with sample environment, Baltic Cortex [unity store](https://assetstore.unity.com/packages/2d/characters/free-animated-warrior-242585)
+Monsters Creatures Fantasy, Luiz Melo [unity store](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949)
+Pixel Art Icon pack - RPG, Cainos, [unity store](https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-icon-pack-rpg-158343)
+RF Castle, Szadi Art. [unity store](https://assetstore.unity.com/packages/2d/environments/rogue-fantasy-castle-164725)
+RPG&Fantasy Mobile GUI, bonk! [unity store](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086)
 
 ## Ahram Ham : Game Logic
 
@@ -183,8 +197,11 @@ I had originally been very confident that I could weave in the narrative into th
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 
 _Screenshots_ -
+[level 1](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level1.jpg)
+[level 4](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level4.jpg)
+The game does not drastically differ between levels in terms of gameplay, so I chose two different levels that showcase how different areas have different themes and different visuals.
 
-_Trailer_ - (Trailer)[]
+_Trailer_ - [Trailer](https://github.com/Benlee1000/Serenity/blob/c63f12c366e412a440cef1481b2f46c220c65d25/pressKit/Serenity_game_trailer.mp4)
 For the trailer I took inspiration from other rouge-like game trailer like [Enter the gungeon](https://www.youtube.com/watch?v=YSpo2VvN0SM&list=WL&index=2). I wanted to show the different mechanics of the game within the trailer. The main mechanics are the movement, so I showed the player moving and dashing, and the attack so I showed the player attacking different enemies. Also I showed a death scene to convey the idea that dying is a part of the game and you will have to die a lot before you can get through the entire game. The trailer also starts with part of the narrative to introduce the story to the audience and hopefully hook them into the main character's goal.
 
 Trailer music -  
@@ -192,6 +209,8 @@ Song: 'Makai Symphony - Dragon Castle' is under a creative commons license licen
 https://www.youtube.com/channel/UC8cn3OdeqYhyhNUyrMxOQKQ​
 Music promoted by BreakingCopyright:
 https://youtu.be/9gBTKiVqprE
+
+Title Art - [Medieval Castle Background, Mokazar](https://www.deviantart.com/mokazar/art/Medieval-Castle-Background-PixelArt-866682698)
 
 _Screenshots_ -
 
