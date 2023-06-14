@@ -8,8 +8,8 @@ public class InitialSetup : MonoBehaviour
     // Can also setup highest level reached and currency here
     private void Awake()
     {
-        PlayerPrefs.SetInt("Attack", 1);
+        PlayerPrefs.SetInt("Attack", 10);
         PlayerPrefs.SetInt("Defense", 1);
-        PlayerPrefs.SetInt("Speed", 8);
+        PlayerPrefs.SetInt("Speed", 20);
     }
 }
