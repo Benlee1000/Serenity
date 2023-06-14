@@ -32,11 +32,11 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        //Basic Movement AI. Just goes towards the player. Doesn't check for obstacles in the way
+        // Basic Movement AI. Just goes towards the player. Doesn't check for obstacles in the way
         transform.position = Vector3.MoveTowards(this.transform.position, PlayerController.instance.transform.position, speed * Time.deltaTime);
 
         if (this.transform.position != PlayerController.instance.transform.position)
-            // might have to adjust this
+            // Might have to adjust this
         {
             anim.SetInteger("enemyRun", 1);
         } else
@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour
 
         if (this.transform.position.x <= PlayerController.instance.transform.position.x)
         {
-            // flip sprite
+            // Flip sprite
             sprite.flipX = false;
         } else
         {
@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
         if(hp <= 0)
         {
             anim.SetBool("enemyDeath", true);
-            //Invoke("Die", .5f);
+            // Invoke("Die", .5f);
             Die();
         }
 
@@ -67,11 +67,15 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.name == "verticalComp")
         {
-            hp -= PlayerController.instance.Attack;
+            // Don't allow enemies to heal if defense too high
+            // Enemies must take minimum damage
+            hp -= (defense - PlayerController.instance.Attack > -2) ? 2 : (PlayerController.instance.Attack - defense);
+
             healthBar.value = ((float)hp) / ((float)maxHP);
             anim.SetTrigger("enemyTakeDamage");
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.gameObject.name == "Player")
@@ -95,5 +99,4 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
         EnemySpawner.instance.numberOfEnemies--;
     }
-
 }

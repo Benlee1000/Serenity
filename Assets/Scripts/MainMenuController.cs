@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /*
  * Adds button functionality for the start menu
- * 
  */
 public class MainMenuController : MonoBehaviour
 {
     public void PlayGame()
     {
         Time.timeScale = 1f;
-        Loader.Load(Loader.Scene.DialogueScreen);
+        Loader.Load(Loader.Scene.OpeningDialogue);
     }
 
     public void QuitGame()

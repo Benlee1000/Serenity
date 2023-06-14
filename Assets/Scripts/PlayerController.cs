@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /*
@@ -19,11 +17,11 @@ public class PlayerController : MonoBehaviour
     private float timeSinceLastAttack = 0f;
     [SerializeField] private GameObject AttackCenter;
     [SerializeField] private Collider2D playerCollider;
-    // anim is used to trigger the different animations
+    // Anim is used to trigger the different animations
 
     private HealthBarController healthBarController;
 
-    //Dash Stuff
+    // Dash Stuff
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float dashSpeed = 20f;
     [SerializeField] float dashDuration = .25f;
@@ -36,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private int defense;
     private int speed;
 
-    //stats getters and setters
+    // Stats getters and setters
     public int Speed { get => speed; set => speed = value; }
     public int Attack { get => attack; set => attack = value; }
 
@@ -65,23 +63,23 @@ public class PlayerController : MonoBehaviour
         timeSinceLastAttack += Time.deltaTime;
         timeSinceLastHit += Time.deltaTime;
 
-        //While dashing we can't do anything
+        // While dashing we can't do anything
         if(isDashing)
         {
             return;
         }
 
-        if(timeSinceLastAttack >= .25f)
+        if(timeSinceLastAttack >= .33f)
         {
             AttackCenter.SetActive(false);
         }
         
-        //calculating the proper angle for the attack
+        // Calculating the proper angle for the attack
         Vector3 rotation = AttackCenter.transform.localEulerAngles;
         rotation.z = (Mathf.Atan2(Camera.main.ScreenToWorldPoint(Input.mousePosition).y - AttackCenter.transform.position.y, Camera.main.ScreenToWorldPoint(Input.mousePosition).x - AttackCenter.transform.position.x) * Mathf.Rad2Deg) - 90.0f;
         AttackCenter.transform.localEulerAngles = rotation;
 
-        //Attack if left click
+        // Attack if left click
         if (Input.GetButtonDown("Fire1") && !AttackCenter.activeSelf)
         {
             PlayerAttack();
@@ -98,13 +96,13 @@ public class PlayerController : MonoBehaviour
         {
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
-        //copied from obscura (zachary): feel free to replace with different/better input system
+        // Copied from obscura (zachary): feel free to replace with different/better input system
         Vector2 movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        //Debug.Log(movementDirection);
-        rb.velocity=this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection,speed);
-        //rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed);
+        // Debug.Log(movementDirection);
+        rb.velocity=this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection,speed); // Zach's complex move code
+        // rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed); // Ty's basic move code
 
-        //Debug.Log(speed);
+        // Debug.Log(speed);
 
         float min = 0.1f;
         if (Mathf.Abs(movementDirection.x) >= min || Mathf.Abs(movementDirection.y) >= min)
@@ -116,31 +114,31 @@ public class PlayerController : MonoBehaviour
             anim.SetInteger("RunSpeed", 0);
         }
 
-
-        //Dash when player hits space
+        // Dash when player hits space
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash(movementDirection));
         }
-
     }
 
     public void TakeDamage(int damage)
     {
-        //TODO: Add a conditional for IFrames. Like If not invinicble then do this down below, otherwise nothing happens
+        // TODO: Add a conditional for IFrames. Like If not invinicble then do this down below, otherwise nothing happens
         if (timeSinceLastHit < 1f)
         {
             return;
         }
 
         timeSinceLastHit = 0f;
-        //Can't allow players to heal if their defense is too high
-        currentHealth -= (defense >= damage) ? 0 : (damage - defense);
+        // Can't allow players to heal if their defense is too high
+        // Also set minimum damage so you can't just facetank every enemy
+        currentHealth -= (defense - damage > -5) ? 5 : (damage - defense);
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
-        // if (currentHealth <= 0)
-        // {
-        //     // Call death state or scene or whatever it is.
+        if (currentHealth <= 0)
+        {
+            anim.SetTrigger("Death");
+            //     // Call death state or scene or whatever it is.
         //     // First stop time.
         //     Time.timeScale = 0f;
         //     combatRoomController.DisplayLoseScreen();
@@ -148,7 +146,7 @@ public class PlayerController : MonoBehaviour
         //     /*//Temporary, we don't actually want to KILL HIM
         //     // NOTE: Could deactivate the player instead so the playercontroller doesn't get deleted
         //     Destroy(gameObject);*/
-        // }
+        }
     }
 
     public void PlayerAttack()
@@ -169,7 +167,6 @@ public class PlayerController : MonoBehaviour
     //https://www.youtube.com/watch?v=VWaiU7W5HdE
     private IEnumerator Dash(Vector2 movementDirection)
     {
-
         canDash = false;
         isDashing = true;
         playerCollider.enabled = false;
@@ -182,9 +179,7 @@ public class PlayerController : MonoBehaviour
         playerCollider.enabled = true;
 
         yield return new WaitForSeconds(dashCooldown);
-       
 
         canDash = true;
     }
-
 }

@@ -224,12 +224,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a4c515488df90468d147abc17d5ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
-  attack: 2
+  hp: 15
+  attack: 10
   defense: 0
-  speed: 6
+  speed: 7
   healthBar: {fileID: 6870947512311758895}
-  maxHP: 5
+  maxHP: 15
 --- !u!50 &-6357448756449768812
 Rigidbody2D:
   serializedVersion: 4

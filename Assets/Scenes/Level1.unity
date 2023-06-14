@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 25450502}
   - component: {fileID: 25450504}
   m_Layer: 0
-  m_Name: Room Controller
+  m_Name: State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
   upgradeMenuObject: {fileID: 1916644914}
   winScreenObject: {fileID: 1612437427}
   loseScreenObject: {fileID: 1563713785}
+  doorMarkerObject: {fileID: 876750059}
 --- !u!4 &25450503
 Transform:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &25450504
 MonoBehaviour:
@@ -10733,16 +10734,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 7072987429634312644, guid: 52cda1c52e74264488ecad9cb1d356f1, type: 3}
-  - {fileID: 4364561360098374267, guid: 48521b77f2f0f6d4ab27fef63ce35612, type: 3}
   spawnLocations:
   - {fileID: 811722963}
   - {fileID: 1837521259}
   - {fileID: 2060037337}
   - {fileID: 1438623937}
   waveMin: 2
-  waveMax: 4
+  waveMax: 3
   enemyMin: 2
-  enemyMax: 4
+  enemyMax: 3
   numberOfEnemies: 0
   leftBottom: {x: -18, y: -8}
   topRight: {x: 18, y: 8}
@@ -10765,7 +10765,7 @@ Transform:
   - {fileID: 2060037338}
   - {fileID: 1438623938}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &188091183
 GameObject:
@@ -10944,9 +10944,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -1255185119099574924, guid: dd47179911bb0554cb456c6f16c99cbc, type: 2}
   m_audioClip: {fileID: 8300000, guid: a0072c7ad0fd237438ec38e0b5b9d92e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11073,7 +11073,7 @@ Transform:
   - {fileID: 194658265}
   - {fileID: 2117690002}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &295916606
 GameObject:
@@ -11224,8 +11224,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: 0}
-  m_SizeDelta: {x: 267, y: 100}
+  m_AnchoredPosition: {x: -65, y: 0}
+  m_SizeDelta: {x: 285, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &369012612
 MonoBehaviour:
@@ -11240,14 +11240,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3372549, g: 0.74509805, b: 0.27058825, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd6e4dadafa75a39e9c3426c43143455, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9d007bda3f468fc58ef3771fd2f139d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11300,7 +11300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 221, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412650742
@@ -11794,7 +11794,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1612437432}
         m_TargetAssemblyTypeName: WinScreenController, Assembly-CSharp
-        m_MethodName: GoToMainMenu
+        m_MethodName: GoToNextScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12013,8 +12013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: 140}
-  m_SizeDelta: {x: 267, y: 100}
+  m_AnchoredPosition: {x: -65, y: 140}
+  m_SizeDelta: {x: 285, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566563089
 MonoBehaviour:
@@ -12029,14 +12029,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.33799893, g: 0.745283, b: 0.2718642, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd6e4dadafa75a39e9c3426c43143455, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9d007bda3f468fc58ef3771fd2f139d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12510,6 +12510,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 744465612}
     - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 744465600, guid: 5086c09551b0e50478a560a63231d49c, type: 3}
       propertyPath: healthBarObject
       value: 
       objectReference: {fileID: 1845722276}
@@ -12868,7 +12876,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 221, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &869594000
@@ -13196,6 +13204,103 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876043618}
   m_CullTransparentMesh: 1
+--- !u!1 &876750059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876750062}
+  - component: {fileID: 876750061}
+  - component: {fileID: 876750060}
+  m_Layer: 0
+  m_Name: Door Marker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &876750060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876750059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6520240c3d1f22948be5e7d64089be94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &876750061
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876750059}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Color: {r: 0.5534295, g: 0.6132076, b: 0.554098, a: 0.54509807}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &876750062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876750059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 7.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &878715708
 GameObject:
   m_ObjectHideFlags: 0
@@ -14119,7 +14224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: 221, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1230860007
@@ -14995,8 +15100,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: -140}
-  m_SizeDelta: {x: 267, y: 100}
+  m_AnchoredPosition: {x: -65, y: -140}
+  m_SizeDelta: {x: 285, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560719065
 MonoBehaviour:
@@ -15011,14 +15116,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3372549, g: 0.74509805, b: 0.27058825, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd6e4dadafa75a39e9c3426c43143455, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9d007bda3f468fc58ef3771fd2f139d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16002,7 +16107,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1837521259
 GameObject:
@@ -38733,7 +38838,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 212042674635641243, guid: dd47179911bb0554cb456c6f16c99cbc, type: 2}
   m_audioClip: {fileID: 8300000, guid: da0fd28ddbade664bae889f05f0ca6da, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
