@@ -47,6 +47,26 @@ _dialgoue scenes_ - There are two dialogue scenes, one at the start of the game 
 
 _door indicator_ - the door indicator is a semi-transparent spinning triangle that is displayed when all enemies are killed in the level. This minimizes player confusion on where to go once the level is complete. 
 
+## Ty Hewitt: Combat System and Enemies
+Before I discuss the combat I want to explain that my main role was originally _Input_. However, as a team we felt that Input was heavily tied into the implementation of each gameplay system that required it. For example, the team member working on Movement would not create a movement system, then simply not implement the input leaving themselves no way of testing it. Therefore, my team elected to let me have the Combat and Enemies role, where I implemented a majority of the combat system. The systems I implemented/worked on are: Attack logic, Enemy Logic, Stats, and the Dash System.
+
+While implementing each of these systems, I tried to keep usability and editability at the forefront so it is easy for balancing etc.
+
+_Attack Logic_ -The basic attack for the player works like this: player left clicks the mouse and the character sends out an attack. What actually occurs is that when the player clicks, the gameobject is enabled and then quickly disabled. The gameobject released has a collider which tells the enemycontroller to take damage on impact. The attack is released depending on where the mouse is and not where the player is facing. Coming up with [the logic](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/PlayerController.cs#L78) for figuring out where the mouse was and rotating the gameobject properly was the most difficult part of this system. The attack gameobject is tied to another gameobject (both children of the player) which is attached to the center of the player. When the mouse rotates, so does the center object, which rotates the attack. Within the script, I made the center object a [SerializeField](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/PlayerController.cs#L18) so it's easy to swap if we wanted to change the attack. Ro later used this logic to add his gameobject that had animations. Lastly, in the PlayerController script, we check for GetButtonDown to make sure the player cannot hold the button for an infinite attack.
+
+_Enemy Logic:_
+
+    _Enemy Behavior_ -The movement system for enemies is extremely simple. The enemy just moves [towards the player](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/EnemyController.cs#L36). If I had more time to work on this game, I would have loved to implement a pathfinding system for the enemies. Currently, all the enemies can get stuck on walls and they are very easy to manipulate for the player.
+
+    _Enemy Attacking/Taking damage_ -Enemies have a [collision detector](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/EnemyController.cs#L66) which checks to see what is touching the enemy. If it's the player, the player takes damage. If it's the attack gameobject, the enemy takes damage. As a design choice for additional difficulty, our team decided to not include knockback, and focus more on a kiting gameplay loop for facing enemies. As a result, it was very possible that enemies may be on top of the player for periods of time, and to make sure that it's fair and not frustrating for the player, we added a 1 second timer between each damage tick for the player. 
+
+    _Enemy Wave System_ -Every level has an EnemyManager which spawns in enemies based on a wave system. Each level has a randomized amount of waves, and a randomized amount of enemies per wave. Although I say it's randomized, the developer has the freedom of selecting the min and max for waves and enemies. Furthermore, I implemented the system so that it is easy to add and remove the types of enemies you want to spawn. The EnemySpawner script takes in a serialized list of enemy prefabs, which are then used to [randomly generate enemies within the list](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/EnemySpawner.cs#L72). Lastly, the next wave spawns after every enemy of the previous one is defeated. The way we keep track of that is by having a static instance of the EnemySpawner, and decreasing a "numberOfenemies" counter each time the die method is called for an enemy. 
+
+    _Enemy Spawn System_ -Every level has certain spawn points that can be easily added and removed. The EnemySpawner script has a serialized list of gameobjects, which the script randomly selects to use for spawn locations of the enemies. Every gameobject that is used as a spawnpoint is a child of the EnemyManager object for organization. Lastly, I implemented the spawner in a way so that [enemies cannot spawn on the spawner closest to the player](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/EnemySpawner.cs#L51)
+
+_Stats_ -Both the player and enemies have four basic stats: HP, Attack, Defense, and Speed. HP represents hitpoints, if it becomes less than or equal to zero you die. Enemies have their gameobject destroyed, while the player gets a defeat screen. Attack represents the amount of damage you do. If Defense was not accounted for, five attack means five damage is dealt to HP. Defense is based off flat damage reduction. However, Ben refined the calculation to have a [minimum damage dealt](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/EnemyController.cs#L72) to prevent the stat from being too overpowered. Lastly, speed represents movementspeed. For enemies, all of these stats are serialized fields so it's easy to edit them for game balance.
+
+_Dash System_ -The dash system was inspired by [this video](https://www.youtube.com/watch?v=VWaiU7W5HdE). I essentially implemented the same dash as this video, with very minor tweaks. When the player presses down on the space bar, the player dashes in the movement they are currently moving in. There is a dash duration, speed, and cooldown all of which are serialized fields. The parts I personally added in was disabling the playerCollider while dashing so that the player can dash through enemies, and dashSlosh which represents the amount of IFrames the player gets. The dash method can be found [here](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/PlayerController.cs#L168) in the PlayerController.
 
 
 ## Movement/Physics
@@ -66,12 +86,6 @@ _Animator and adding animations to scripts_ -
 _Enemy healthbars_ -
 
 _Source Credits_ -
-
-## Input
-
-**Describe the default input configuration.**
-
-**Add an entry for each platform or input style your project supports.**
 
 ## Game Logic
 
