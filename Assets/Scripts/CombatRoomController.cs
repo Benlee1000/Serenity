@@ -14,7 +14,10 @@ public class CombatRoomController : MonoBehaviour
     private PlayerUpgradeController upgradeMenu;
     private bool upgrading;
     private bool doorMarked;
-
+    public AudioClip DeathNoise;
+    public AudioClip WinNoise;
+    public AudioSource audioSource;
+    private int noisePlayed;
     private void Start()
     {
         Time.timeScale = 1f;
@@ -22,6 +25,8 @@ public class CombatRoomController : MonoBehaviour
         doorMarked = false;
         pauseMenu = pauseMenuObject.GetComponent<PauseMenuController>();
         upgradeMenu = upgradeMenuObject.GetComponent<PlayerUpgradeController>();
+        audioSource=GetComponent<AudioSource>();
+         noisePlayed=0;
     }
     private void Update()
     {
@@ -41,6 +46,10 @@ public class CombatRoomController : MonoBehaviour
         if (PlayerController.instance.Health <= 0)
         {
             Time.timeScale = 0f;
+            if(noisePlayed==0){
+                audioSource.PlayOneShot(DeathNoise);
+            }
+            noisePlayed=1;
             DisplayLoseScreen();
         }
 
@@ -58,6 +67,10 @@ public class CombatRoomController : MonoBehaviour
             Time.timeScale = 0f;
             if(Loader.GetCurrentScene() != 7)
             {
+                if(noisePlayed==0){
+                    audioSource.PlayOneShot(WinNoise);
+                }
+                noisePlayed=1;
                 upgradeMenu.DisplayUpgradeScreen();
                 upgrading = true;
 
@@ -68,6 +81,10 @@ public class CombatRoomController : MonoBehaviour
         if (!upgrading && EnemySpawner.instance.numberOfEnemies == 0 && EnemySpawner.instance.Waves <= 0 && Loader.GetCurrentScene() == 7)
         {
             Time.timeScale = 0f;
+            if(noisePlayed==0){
+                audioSource.PlayOneShot(WinNoise);
+            }
+            noisePlayed=1;
             DisplayWinScreen();
         }
     }    
