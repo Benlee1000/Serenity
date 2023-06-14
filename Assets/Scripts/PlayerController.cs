@@ -99,12 +99,12 @@ public class PlayerController : MonoBehaviour
             this.GetComponent<SpriteRenderer>().flipX = false;
         }
         //copied from obscura (zachary): feel free to replace with different/better input system
-        Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Debug.Log(movementDirection);
-        //this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection);
+        Vector2 movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        //Debug.Log(movementDirection);
+        rb.velocity=this.GetComponent<MovePlayer>().MovePlayerFunction(movementDirection,speed);
+        //rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed);
 
-        rb.velocity = new Vector2(movementDirection.x * speed, movementDirection.y * speed);
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
         float min = 0.1f;
         if (Mathf.Abs(movementDirection.x) >= min || Mathf.Abs(movementDirection.y) >= min)
