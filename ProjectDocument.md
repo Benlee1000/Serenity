@@ -105,6 +105,9 @@ Both axes were handled fairly independently. However when the player inputs in b
 ### Collisions with entities and obstacles/walls:
 Both the player and enemies are able to push each other as Rigidbodies. Additionally, obstacles and walls will prevent the player from passing through, and even rubbing against them causes some friction
 
+### Link
+https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/Assets/Scripts/MovePlayer.cs#LL7C1-L7C1
+
 ## Animation and Visuals - Rohith Saravana
 
 **List your assets including their sources and licenses.**
