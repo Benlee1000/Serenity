@@ -120,7 +120,7 @@ In theory, coding state transitions seemed relatiely simple, however as the game
 
 **Document the sound style.**
 
-## Gameplay Testing
+## Ahram Ham : Gameplay Testing
 
 **Add a link to the full results of your gameplay tests.**
 [The full results of playtesting can be found here](https://docs.google.com/document/d/1itomTK0TprLcbF0yv7M-vQmB3NAFYdXZ213846b0qp8/edit?usp=sharing)
