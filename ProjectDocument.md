@@ -128,7 +128,7 @@ In theory, coding state transitions seemed relatiely simple, however as the game
 
 ## Ben Lee: Game Feel
 
-_gameplay suggestions_ - I provided suggestions to group members managing movement, input, states, map design, sounds, audio, game logic, and animation in order to make the game feel fun and effortless to play. I also made suggestions to limit bugs and exploits in the game.
+_gameplay suggestions_ - I provided suggestions to group members managing movement, input, states, map design, sounds, music, game logic, and animation in order to make the game feel fun and effortless to play. I also made suggestions to limit bugs and exploits in the game.
 
 _game balancing_ - I tested out the game as a whole and changed many underlying systems to give players a fair and rewarding challenge that ramped up in difficulty as you progressed in the levels. I added a special formula to the random number generator for attack, defense, and speed upgrades that scales with the current level the player is on. These formulas make it so each stat upgrade is desirable. They each offer their own competitive advantage: Attack makes it so you break through armor easier and kill enemies in less hits, armor makes it so that taking hits from enemies is less punishing, speed makes it easier to "kite" enemies and handle larger waves of enemies by running around them. Finally, I adjusted how defense works with player's and enemies' health so that each hit must deal a minimum amount of damage. This makes it so that full-on tanking hits by just having high defense is greatly reduced.
 
