@@ -88,7 +88,7 @@ _Enemy healthbars_ -
 
 _Asset Credits_ -
 
-## Game Logic
+## Ahram Ham : Game Logic
 
 General Game Logic:
 For general game logic, the majority of my work was determining and implementing how the game should run. Most of this work was determing how scenes should be organized, when certain screens should show up, and implementing state transitions. Since a lot of the main roles intersected with the subroles, I moved past the Game logic role and helped out wherever was needed. This ended up being the form of working on level design and how enemies and players could interact with the world.
