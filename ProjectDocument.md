@@ -144,13 +144,27 @@ In theory, coding state transitions seemed relatiely simple, however as the game
 
 **Describe the platforms you targeted for your game release. For each, describe the process and unique actions taken for each platform. What obstacles did you overcome? What was easier than expected?**
 
-## Audio
+## Zachary Graeber: Audio
+### Mechanics
+Physical sound effects were made through the player (which was where the action was happening and the logical location of the source of the noise) and listened by the camera
+Other effects (music, loss/win effects) were made from a fixed point in the scene and listened by the camera
 
-**List your assets including their sources and licenses.**
+### Credits
+Audio was found on freesound.org
 
-**Describe the implementation of your audio system.**
+Sword swing: https://freesound.org/people/32cheeseman32/sounds/180830/
+Get hit: https://freesound.org/people/scorpion67890/sounds/614314/
+Dash: https://freesound.org/people/Kastenfrosch/sounds/521999/
+Die: https://freesound.org/people/HighPixel/sounds/577033/
+Win round/game: https://freesound.org/people/sonically_sound/sounds/624878/
+Background music: https://freesound.org/people/Seth_Makes_Sounds/sounds/672440/
 
-**Document the sound style.**
+### Reasoning:
+The background music was chosen because of how it fit the spooky yet calm theme of the game, and because it sounded good in general. All the other effects were chosen becuase of a mix of realism and they fit the vibe of the action. For example, the death noise is slightly unsettling in order to convey the significance of the death.
+
+### Controls:
+Music and sound effect volume can be separately changed to be louder or quieter in pause menu (see UI for more information)
+
 
 ## Ahram Ham : Gameplay Testing
 
