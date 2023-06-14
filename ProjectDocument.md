@@ -32,8 +32,8 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 **Describe the steps you took in your role as producer. Typical items include group scheduling mechanism, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, depedency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
-## User Interface
-_sprites_ - Nearly all sprites for UI were taken from this free [asset pack](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086).
+## Ben Lee: User Interface
+_sprites_ - Nearly all sprites for UI were taken from this free [asset pack](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086). I made sure that the user interface kept a consistent look and feel to add to the user experience
 
 _menus_ - I created the start menu, pause menu, and options menu. All of these menus have buttons which change sprites when clicking them for a more satisfying user experience. The start menu has a sunset background to set the scene for the game. It has a play button which initiates the opening dialogue screen. Additionally, it has an options button which opens an option menu. Underneath that is a quit button to exit the game. Finally is the help button which opens up a panel, teaching the user how to play. The pause menu has a resume, options, and quit button which returns you to the main menu. It also pauses the entire game by setting the time scale to 0 and creates a white semi-transparent background to indicate the game is paused. Lastly is the options menu. This menu has 2 sliders which are attached to music and sfx volume in our volume mixer so that the user's choices persist across scenes. The volume controller converts these slider values to fit into a log scale so that 1/2 of a volume slider actually represents 1/2 of loudness of that sound. It also has an accept button to go back to the previous menu.
 
@@ -126,7 +126,7 @@ In theory, coding state transitions seemed relatiely simple, however as the game
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 
-## Game Feel
+## Ben Lee: Game Feel
 
 _gameplay suggestions_ - I provided suggestions to group members managing movement, input, states, map design, sounds, audio, game logic, and animation in order to make the game feel fun and effortless to play. I also made suggestions to limit bugs and exploits in the game.
 
