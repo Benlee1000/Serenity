@@ -20,6 +20,14 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            DisplayNextSentence();
+        }
+    }
+
     public void StartDialogue(Dialogue dialogue)
     {
         nameText.text = dialogue.name;
