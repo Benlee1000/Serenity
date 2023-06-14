@@ -135,9 +135,10 @@ public class PlayerController : MonoBehaviour
         currentHealth -= (defense - damage > -5) ? 5 : (damage - defense);
         healthBarController.SetHealth(currentHealth);
         anim.SetTrigger("Hurt");
-        // if (currentHealth <= 0)
-        // {
-        //     // Call death state or scene or whatever it is.
+        if (currentHealth <= 0)
+        {
+            anim.SetTrigger("Death");
+            //     // Call death state or scene or whatever it is.
         //     // First stop time.
         //     Time.timeScale = 0f;
         //     combatRoomController.DisplayLoseScreen();
@@ -145,7 +146,7 @@ public class PlayerController : MonoBehaviour
         //     /*//Temporary, we don't actually want to KILL HIM
         //     // NOTE: Could deactivate the player instead so the playercontroller doesn't get deleted
         //     Destroy(gameObject);*/
-        // }
+        }
     }
 
     public void PlayerAttack()
