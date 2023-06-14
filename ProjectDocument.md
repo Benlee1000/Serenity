@@ -86,8 +86,6 @@ The velocity curve is modeled by the equation velocity=maxspeed(1-e^(sharpness*t
 
 Time is how long it has been accelerating from 0, assuming the input button has been held the whole time. However, this isn't always the case (the player will usually choose to change their input while the character is still moving). To remedy this, I found the derivative of the velocity curve and then put it in terms of velocity giving a=dv/dt=(maxspeed-velocity)*sharpness. Essentially what this means is that the player accelerates very quickly when moving slow, but accelerates much slower when already near maximum speed.
 
-Here is a graph: Green = maxSpeed,  Red = velocity,  Blue = acceleration
-
 #### Active deceleration:
 When the player is actively decelerating (eg. pressing ← when moving right), the player decelerates at a linear rate equal to maxspeed*sharpness, which is the same as the acceleration when velocity=0
 
@@ -97,6 +95,9 @@ When the player is passively decelerating (is no longer pressing any buttons but
 #### Visualization
 Graphical representation: ( ← pressed during yellow, → pressed during red/green, nothing pressed during blue)
 Solid line represents velocity, Dashed line represents acceleration
+
+
+![MovementGraph](https://github.com/Benlee1000/Serenity/assets/134554201/ba87a3c3-b11b-4d4a-b9ce-52bd8266f468)
 
 #### Multi Dimensional movement:
 Both axes were handled fairly independently. However when the player inputs in both the x and y dimensions, most of the variables are temporarily nerfed, with a 0.75 multiplier. This is to prevent the player from being faster when moving diagonally. Even with the nerf, moving diagonally is still 6% faster, but that is balanced by the inefficiencies of moving diagonally in a grid-like map.
