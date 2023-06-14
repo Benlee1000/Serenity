@@ -78,7 +78,7 @@ The movement in the game goes well beyond the basic "move in the direction of th
 
 Instead it is based in balance a mix of realism, smoothness, and playability, where the the inputs relate to acceleration, and acceleration is slower at high speeds. The player can use the WASD or Arrow Keys to control the character movement (see Input section for more information)
 
-### Technical Description:
+#### Technical Description:
 Input in this game was linked to acceleration rather than velocity.
 
 Accelerating in direction of movement:
@@ -88,20 +88,20 @@ Time is how long it has been accelerating from 0, assuming the input button has 
 
 Here is a graph: Green = maxSpeed,  Red = velocity,  Blue = acceleration
 
-### Active deceleration:
+#### Active deceleration:
 When the player is actively decelerating (eg. pressing ← when moving right), the player decelerates at a linear rate equal to maxspeed*sharpness, which is the same as the acceleration when velocity=0
 
-### Passive deceleration:
+#### Passive deceleration:
 When the player is passively decelerating (is no longer pressing any buttons but still has inertia), the player follows the curve glideMultiplier*velocity*sharpness, where glideMultiplier is a constant ≤1. Effectively the player decelerates fairly quickly when near full speed, but decelerate slowly when the character is moving very slowly.
 
-### Visualization
+#### Visualization
 Graphical representation: ( ← pressed during yellow, → pressed during red/green, nothing pressed during blue)
 Solid line represents velocity, Dashed line represents acceleration
 
-### Multi Dimensional movement:
+#### Multi Dimensional movement:
 Both axes were handled fairly independently. However when the player inputs in both the x and y dimensions, most of the variables are temporarily nerfed, with a 0.75 multiplier. This is to prevent the player from being faster when moving diagonally. Even with the nerf, moving diagonally is still 6% faster, but that is balanced by the inefficiencies of moving diagonally in a grid-like map.
 
-## Collisions with entities and obstacles/walls:
+### Collisions with entities and obstacles/walls:
 Both the player and enemies are able to push each other as Rigidbodies. Additionally, obstacles and walls will prevent the player from passing through, and even rubbing against them causes some friction
 
 ## Animation and Visuals - Rohith Saravana
