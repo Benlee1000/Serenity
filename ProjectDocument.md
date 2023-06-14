@@ -70,9 +70,39 @@ _Stats_ -Both the player and enemies have four basic stats: HP, Attack, Defense,
 
 _Dash System_ -The dash system was inspired by [this video](https://www.youtube.com/watch?v=VWaiU7W5HdE). I essentially implemented the same dash as this video, with very minor tweaks. When the player presses down on the space bar, the player dashes in the movement they are currently moving in. There is a dash duration, speed, and cooldown all of which are serialized fields. The parts I personally added in was disabling the playerCollider while dashing so that the player can dash through enemies, and dashSlosh which represents the amount of IFrames the player gets. The dash method can be found [here](https://github.com/Benlee1000/Serenity/blob/547207d73fb542a8ba5a86adbad72beb19096be7/Assets/Scripts/PlayerController.cs#L168) in the PlayerController.
 
-## Movement/Physics
+## Zachary Graeber: Movement/Physics
+### Movement:
+#### Summary:
 
-**Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
+The movement in the game goes well beyond the basic "move in the direction of the inputs" mechanics.
+
+Instead it is based in balance a mix of realism, smoothness, and playability, where the the inputs relate to acceleration, and acceleration is slower at high speeds. The player can use the WASD or Arrow Keys to control the character movement (see Input section for more information)
+
+#### Technical Description:
+Input in this game was linked to acceleration rather than velocity.
+
+Accelerating in direction of movement:
+The velocity curve is modeled by the equation velocity=maxspeed(1-e^(sharpness*time)), where sharpness is generally related to how powerful the acceleration force is.
+
+Time is how long it has been accelerating from 0, assuming the input button has been held the whole time. However, this isn't always the case (the player will usually choose to change their input while the character is still moving). To remedy this, I found the derivative of the velocity curve and then put it in terms of velocity giving a=dv/dt=(maxspeed-velocity)*sharpness. Essentially what this means is that the player accelerates very quickly when moving slow, but accelerates much slower when already near maximum speed.
+
+Here is a graph: Green = maxSpeed,  Red = velocity,  Blue = acceleration
+
+#### Active deceleration:
+When the player is actively decelerating (eg. pressing ← when moving right), the player decelerates at a linear rate equal to maxspeed*sharpness, which is the same as the acceleration when velocity=0
+
+#### Passive deceleration:
+When the player is passively decelerating (is no longer pressing any buttons but still has inertia), the player follows the curve glideMultiplier*velocity*sharpness, where glideMultiplier is a constant ≤1. Effectively the player decelerates fairly quickly when near full speed, but decelerate slowly when the character is moving very slowly.
+
+#### Visualization
+Graphical representation: ( ← pressed during yellow, → pressed during red/green, nothing pressed during blue)
+Solid line represents velocity, Dashed line represents acceleration
+
+#### Multi Dimensional movement:
+Both axes were handled fairly independently. However when the player inputs in both the x and y dimensions, most of the variables are temporarily nerfed, with a 0.75 multiplier. This is to prevent the player from being faster when moving diagonally. Even with the nerf, moving diagonally is still 6% faster, but that is balanced by the inefficiencies of moving diagonally in a grid-like map.
+
+### Collisions with entities and obstacles/walls:
+Both the player and enemies are able to push each other as Rigidbodies. Additionally, obstacles and walls will prevent the player from passing through, and even rubbing against them causes some friction
 
 ## Animation and Visuals - Rohith Saravana
 
