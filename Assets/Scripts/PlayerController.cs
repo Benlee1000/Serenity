@@ -33,7 +33,11 @@ public class PlayerController : MonoBehaviour
     private int attack;
     private int defense;
     private int speed;
-
+    //Audio
+    public AudioClip SwingAudio;
+    public AudioClip DashAudio;
+    public AudioClip GetHurt;
+    public AudioSource audioSource;
     // Stats getters and setters
     public int Speed { get => speed; set => speed = value; }
     public int Attack { get => attack; set => attack = value; }
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBarController = healthBarObject.GetComponentInChildren<HealthBarController>();
-
+        audioSource=GetComponent<AudioSource>();
         // Stats retrieved from saved values
         attack = PlayerPrefs.GetInt("Attack");
         defense = PlayerPrefs.GetInt("Defense");
@@ -83,6 +87,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && !AttackCenter.activeSelf)
         {
             PlayerAttack();
+            audioSource.PlayOneShot(SwingAudio,50);
         }
         
         Vector3 mousePos = Input.mousePosition;
@@ -118,6 +123,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             StartCoroutine(Dash(movementDirection));
+            audioSource.PlayOneShot(DashAudio);
         }
     }
 
@@ -134,6 +140,7 @@ public class PlayerController : MonoBehaviour
         // Also set minimum damage so you can't just facetank every enemy
         currentHealth -= (defense - damage > -5) ? 5 : (damage - defense);
         healthBarController.SetHealth(currentHealth);
+        audioSource.PlayOneShot(GetHurt);
         anim.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {

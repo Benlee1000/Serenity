@@ -11,7 +11,8 @@ public class MovePlayer : MonoBehaviour
     // How quickly the player can get near it's top speed
     float defaultSharpness = 8;
     float decelSpeed;
-    float glideDecelSpeed = 100;
+    float glideDecelSpeedMult=0.75f;
+    float glideDecelSpeed;
     Vector2 playerVel = new Vector2(0,0);
     // For testing purposes, set to a small number <1, otherwise set to 1
     float testMult = 1.0f;
@@ -33,6 +34,7 @@ public class MovePlayer : MonoBehaviour
     {
         maxSpeed = speed;
         decelSpeed = maxSpeed*defaultSharpness;
+        glideDecelSpeed=decelSpeed*glideDecelSpeedMult;
 
         // X axis
         float sharpness = defaultSharpness;
