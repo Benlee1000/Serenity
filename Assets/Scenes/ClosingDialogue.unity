@@ -999,9 +999,12 @@ MonoBehaviour:
   dialogue:
     name: Sir Gideon
     sentences:
-    - ... ... ...
-    - Closing words 1
-    - Closing words 2
+    - To bask in the sunlight once more... I never thought I would be able to experience
+      this again
+    - I'm finally free of it all. The killing, the pain and sadness.
+    - ' I can finally live a life of peace, away from the shackles of the corrupt
+      Monarchy.'
+    - I can be happy.
 --- !u!1 &1733250270
 GameObject:
   m_ObjectHideFlags: 0
