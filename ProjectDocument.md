@@ -6,10 +6,6 @@ Serenity is a 2D top down rogue-like action RPG. You play as Sir Gideon, a disgr
 
 ## Gameplay Explanation
 
-**In this section, explain how the game should be played. Treat this as a manual within a game. It is encouraged to explain the button mappings and the most optimal gameplay strategy.**
-
-**If you did work that should be factored in to your grade that does not fit easily into the proscribed roles, add it here! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
-
 ### How to play:
 Run Serenity.exe in the main game folder to play the game. <br>
 
@@ -28,10 +24,6 @@ Here is an example:
 _Procedural Terrain_ - The background of the game consists of procedurally-generated terrain that is produced with Perlin noise. This terrain can be modified by the game at run-time via a call to its script methods. The intent is to allow the player to modify the terrain. This system is based on the component design pattern and the procedural content generation portions of the course. [The PCG terrain generation script](https://github.com/dr-jam/CameraControlExercise/blob/513b927e87fc686fe627bf7d4ff6ff841cf34e9f/Obscura/Assets/Scripts/TerrainGenerator.cs#L6).
 
 You should replay any **bold text** with your relevant information. Liberally use the template when necessary and appropriate.
-
-## Producer
-
-**Describe the steps you took in your role as producer. Typical items include group scheduling mechanism, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, depedency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
 ## Ben Lee: User Interface
 
@@ -119,7 +111,7 @@ Both the player and enemies are able to push each other as Rigidbodies. Addition
 ### Link
 https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/Assets/Scripts/MovePlayer.cs#LL7C1-L7C1
 
-## Animation and Visuals - Rohith Saravana
+## Rohith Saravana: Animation and Visuals
 
 **List your assets including their sources and licenses.**
 
@@ -127,19 +119,19 @@ https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f3
 
 The game is of the fantasy genre, so we wanted art that matched that. Also we wanted sprites and assets that matched the ominous, dark tone of the game.
 
-_Animating Sprites and hitboxes_ - For the player character and enemies, we got assets through the Unity Store. For the enemies, I created animations using the sprite for their movement, when they take damage, spawn, when they are idle, and their death. I also added hitboxes so that we could register when the enemies collied with the player. For the player, the animations were already created, but I had to add box colliders to the idle, running, take damage, and death animation. The attack animation was only horizontal, so I created a particle effect that would rotate in the direction that they player attacked in, because the player can attack in any direction. The player and enemies were all made into prefabs which would make it easy to create multiple levels with the same enemies. I also adjusted the size of the enemies to match their power. An increase in size is generally correlated with more strength, but slower while less size usually means less power, but more speed. The sizes of the enemy help to communicate what "type" they are (the small goblins are weak but move fast, while the Knight are easy to avoid but if they hit you they do a lot of damage). For creating animations from sprite sheets, I found this [tutorial](https://www.youtube.com/watch?v=FXXc0hTWIMs&list=WL&index=4) very helpful. Also this (tutorial)[https://www.youtube.com/watch?v=_z68_OoC_0o&list=WL&index=10] was a good introduction with how to manipulate particle effects, which are pretty complicated.
+_Animating Sprites and hitboxes_ - For the player character and enemies, we got assets through the Unity Store. For the enemies, I created animations using the sprite for their movement, when they take damage, spawn, when they are idle, and their death. I also added hitboxes so that we could register when the enemies collied with the player. For the player, the animations were already created, but I had to add box colliders to the idle, running, take damage, and death animation. The attack animation was only horizontal, so I created a particle effect that would rotate in the direction that they player attacked in, because the player can attack in any direction. The player and enemies were all made into prefabs which would make it easy to create multiple levels with the same enemies. I also adjusted the size of the enemies to match their power. An increase in size is generally correlated with more strength, but slower while less size usually means less power, but more speed. The sizes of the enemy help to communicate what "type" they are (the small goblins are weak but move fast, while the Knight are easy to avoid but if they hit you they do a lot of damage). For creating animations from sprite sheets, I found this [tutorial](https://www.youtube.com/watch?v=FXXc0hTWIMs&list=WL&index=4) very helpful. Also this [tutorial](https://www.youtube.com/watch?v=_z68_OoC_0o&list=WL&index=10) was a good introduction with how to manipulate particle effects, which are pretty complicated.
 
 _Animator and adding animations to scripts_ - For the player character and the enemy sprites, I used the animator within Unity to create transitions between the animations. Sprites would initially be in an idle animation state and would transition to different animations based on what happens in the game. For example if the player collided with an enemy, the take damage animation triggerd or if the player attacks, then the [attack animation](https://github.com/Benlee1000/Serenity/blob/4596dbc9367e7251e871514378fa052665797ce3/Assets/Scripts/PlayerController.cs#LL110C12-L110C12) triggered. To trigger these animations, I created Animator objects within the controller and movement scripts of the player and enemies. These animator objects would be linked to the appropriate prefab in each script. Within the animator, I also had to adjust the transition times between animations to make sure that the transitions were smooth and not jittery.
 
-_Enemy healthbars_ - For the enemies, I created healthbars using the slider UI in Unity. Within the enemy controller script if the enemy got attacked by the player, I adjusted the healthbar value to match the HP of the (enemy)[https://github.com/Benlee1000/Serenity/blob/b1824bf698920a2b6c723a9267ee4895dd6e525b/Assets/Scripts/EnemyController.cs#L74]. Healthbars give the player an idea of how close an enemy is to dying and also gives them a feel for how poweful their character is. In the beginning, each attack only takes off a small fraction of an enemy's healthbar. But, if you upgrade your attack, you can see how much more damage you deal with a single attack. I also adjusted the size of the healthbar to match enemy sizes. This (video)[https://www.youtube.com/watch?v=ZYeXmze5gxg&list=WL&index=22] helped me learn how to make and adjust the healthbars.
+_Enemy healthbars_ - For the enemies, I created healthbars using the slider UI in Unity. Within the enemy controller script if the enemy got attacked by the player, I adjusted the healthbar value to match the HP of the [enemy](https://github.com/Benlee1000/Serenity/blob/b1824bf698920a2b6c723a9267ee4895dd6e525b/Assets/Scripts/EnemyController.cs#L74). Healthbars give the player an idea of how close an enemy is to dying and also gives them a feel for how poweful their character is. In the beginning, each attack only takes off a small fraction of an enemy's healthbar. But, if you upgrade your attack, you can see how much more damage you deal with a single attack. I also adjusted the size of the healthbar to match enemy sizes. This [video](https://www.youtube.com/watch?v=ZYeXmze5gxg&list=WL&index=22) helped me learn how to make and adjust the healthbars.
 
 _Asset Credits_ -
-Bandits - Pixel Art, Sven Thole [unity store](https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130)
-Free animated warrior with sample environment, Baltic Cortex [unity store](https://assetstore.unity.com/packages/2d/characters/free-animated-warrior-242585)
-Monsters Creatures Fantasy, Luiz Melo [unity store](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949)
-Pixel Art Icon pack - RPG, Cainos, [unity store](https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-icon-pack-rpg-158343)
-RF Castle, Szadi Art. [unity store](https://assetstore.unity.com/packages/2d/environments/rogue-fantasy-castle-164725)
-RPG&Fantasy Mobile GUI, bonk! [unity store](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086)
+* Bandits - Pixel Art, Sven Thole [unity store](https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130)
+* Free animated warrior with sample environment, Baltic Cortex [unity store](https://assetstore.unity.com/packages/2d/characters/free-animated-warrior-242585)
+* Monsters Creatures Fantasy, Luiz Melo [unity store](https://assetstore.unity.com/packages/2d/characters/monsters-creatures-fantasy-167949)
+* Pixel Art Icon pack - RPG, Cainos, [unity store](https://assetstore.unity.com/packages/2d/gui/icons/pixel-art-icon-pack-rpg-158343)
+* RF Castle, Szadi Art. [unity store](https://assetstore.unity.com/packages/2d/environments/rogue-fantasy-castle-164725)
+* RPG&Fantasy Mobile GUI, bonk! [unity store](https://assetstore.unity.com/packages/2d/gui/rpg-fantasy-mobile-gui-with-source-files-166086)
 
 ## Ahram Ham : Game Logic
 
@@ -173,12 +165,12 @@ Other effects (music, loss/win effects) were made from a fixed point in the scen
 ### Credits
 Audio was found on freesound.org
 
-Sword swing: https://freesound.org/people/32cheeseman32/sounds/180830/
-Get hit: https://freesound.org/people/scorpion67890/sounds/614314/
-Dash: https://freesound.org/people/Kastenfrosch/sounds/521999/
-Die: https://freesound.org/people/HighPixel/sounds/577033/
-Win round/game: https://freesound.org/people/sonically_sound/sounds/624878/
-Background music: https://freesound.org/people/Seth_Makes_Sounds/sounds/672440/
+Sword swing: https://freesound.org/people/32cheeseman32/sounds/180830/ <br>
+Get hit: https://freesound.org/people/scorpion67890/sounds/614314/ <br>
+Dash: https://freesound.org/people/Kastenfrosch/sounds/521999/ <br>
+Die: https://freesound.org/people/HighPixel/sounds/577033/ <br>
+Win round/game: https://freesound.org/people/sonically_sound/sounds/624878/ <br>
+Background music: https://freesound.org/people/Seth_Makes_Sounds/sounds/672440/ <br>
 
 ### Reasoning:
 The background music was chosen because of how it fit the spooky yet calm theme of the game, and because it sounded good in general. All the other effects were chosen becuase of a mix of realism and they fit the vibe of the action. For example, the death noise is slightly unsettling in order to convey the significance of the death.
@@ -211,17 +203,11 @@ I had originally been very confident that I could weave in the narrative into th
 
 -Sir Gideon starts off as a rather slow character for two reasons. One was for balancing reasons and as an incentive for the player to choose speed as opposed to attack when upgrading. The second was to give a bit of realism to the character. Sir Gideon is a knight captain who has served many years under the empire, and is growing old. His body doesn't move the way it used to, and I wanted the beginning to reflect that (although you can increase his speed to very high levels through the upgrade system).
 
-**Document how the narrative is present in the game via assets, gameplay systems, and gameplay.**
+## Rohith Saravana: Press Kit and Trailer
 
-## Press Kit and Trailer - Rohith Saravana
-
-**Include links to your presskit materials and trailer.**
-
-**Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
-
-_Screenshots_ -
-[level 1](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level1.jpg)
-[level 4](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level4.jpg)
+_Screenshots_
+* [level 1](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level1.jpg)
+* [level 4](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level4.jpg)
 The game does not drastically differ between levels in terms of gameplay, so I chose two different levels that showcase how different areas have different themes and different visuals.
 
 _Trailer_ - [Trailer](https://github.com/Benlee1000/Serenity/blob/c63f12c366e412a440cef1481b2f46c220c65d25/pressKit/Serenity_game_trailer.mp4)
@@ -235,12 +221,10 @@ https://youtu.be/9gBTKiVqprE
 
 Title Art - [Medieval Castle Background, Mokazar](https://www.deviantart.com/mokazar/art/Medieval-Castle-Background-PixelArt-866682698)
 
-_Screenshots_ -
-
 ## Ben Lee: Game Feel
 
 _gameplay suggestions_ - I provided suggestions to group members managing movement, input, states, map design, sounds, music, game logic, and animation in order to make the game feel fun and effortless to play. I also made suggestions to limit bugs and exploits in the game.
 
-_game balancing_ - I tested out the game as a whole and changed many underlying systems to give players a fair and rewarding challenge that ramped up in difficulty as you progressed in the levels. This took many hours of playing through the game and having others test out which balance changes made the game too hard, too easy, or just the right amount of difficulty. I added a special formula to the random number generator for attack, defense, and speed upgrades that scales with the current level the player is on. These formulas make it so each stat upgrade is desirable. They each offer their own competitive advantage: attack makes it so you break through armor easier and kill enemies in less hits, armor makes it so that taking hits from enemies is less punishing, speed makes it easier to "kite" enemies and handle larger waves of enemies by running around them. Finally, I adjusted how defense works with player's and enemies' health so that each hit must deal a minimum amount of damage. This makes it so that full-on tanking hits by just having high defense is greatly reduced.
+_game balancing_ - I tested out the game as a whole and changed many underlying systems to give players a fair and rewarding challenge that ramped up in difficulty as you progressed in the levels. This took many hours of playing through the game and having others test out which balance changes made the game too hard, too easy, or added just the right amount of difficulty. I included a [special formula](https://github.com/Benlee1000/Serenity/blob/49d17f3d1079b030f1686737d4437317ed148510/Assets/Scripts/PlayerUpgradeController.cs#L23) for the random number generator for attack, defense, and speed upgrades that scales with the current level the player is on. These formulas make it so each stat upgrade is desirable. They each offer their own competitive advantage: attack makes it so you break through armor easier and kill enemies in less hits, armor makes it so that taking hits from enemies is less punishing, speed makes it easier to "kite" enemies and handle larger waves of enemies by running around them. Finally, I adjusted how defense works with player's and enemies' health so that each hit must deal a minimum amount of damage. This makes it so that full-on tanking hits by just having high defense is greatly reduced.
 
 _enemy balance_ - I changed all enemy prefab stats to reflect their design, giving each strengths and weaknesses. Goblins move fast, but have little damage and health, with no armor. Skeletons start off moving the same speed as the player and have average health and attack, but have low armor. Knights have incredible damage, high health, and high armor, but significantly lack in the movement department. Additionally, I modified each level to have a custom range of waves, enemies, and also enemy types. The first 3 levels introduce you to a new enemy type on each level. The last 3 levels ramp up the number of waves significantly, with the last level requiring you to utilize your upgrades, knowledge of enemy types, and obstacles in order to emerge victorious.
