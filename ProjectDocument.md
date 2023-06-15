@@ -11,6 +11,7 @@ Serenity is a 2D top down rogue-like action RPG. You play as Sir Gideon, a disgr
 **If you did work that should be factored in to your grade that does not fit easily into the proscribed roles, add it here! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
 
 ### How to play:
+Run Serenity.exe in the main game folder to play the game. <br>
 
 Use WASD to move the player and Space allows the player to dash.
 Use the mouse to aim and Left click to attack.
