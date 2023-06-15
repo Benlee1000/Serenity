@@ -6,10 +6,6 @@ Serenity is a 2D top down rogue-like action RPG. You play as Sir Gideon, a disgr
 
 ## Gameplay Explanation
 
-**In this section, explain how the game should be played. Treat this as a manual within a game. It is encouraged to explain the button mappings and the most optimal gameplay strategy.**
-
-**If you did work that should be factored in to your grade that does not fit easily into the proscribed roles, add it here! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
-
 ### How to play:
 
 Use WASD to move the player and Space allows the player to dash.
@@ -27,10 +23,6 @@ Here is an example:
 _Procedural Terrain_ - The background of the game consists of procedurally-generated terrain that is produced with Perlin noise. This terrain can be modified by the game at run-time via a call to its script methods. The intent is to allow the player to modify the terrain. This system is based on the component design pattern and the procedural content generation portions of the course. [The PCG terrain generation script](https://github.com/dr-jam/CameraControlExercise/blob/513b927e87fc686fe627bf7d4ff6ff841cf34e9f/Obscura/Assets/Scripts/TerrainGenerator.cs#L6).
 
 You should replay any **bold text** with your relevant information. Liberally use the template when necessary and appropriate.
-
-## Producer
-
-**Describe the steps you took in your role as producer. Typical items include group scheduling mechanism, links to meeting notes, descriptions of team logistics problems with their resolution, project organization tools (e.g., timelines, depedency/task tracking, Gantt charts, etc.), and repository management methodology.**
 
 ## Ben Lee: User Interface
 
@@ -172,12 +164,12 @@ Other effects (music, loss/win effects) were made from a fixed point in the scen
 ### Credits
 Audio was found on freesound.org
 
-Sword swing: https://freesound.org/people/32cheeseman32/sounds/180830/
-Get hit: https://freesound.org/people/scorpion67890/sounds/614314/
-Dash: https://freesound.org/people/Kastenfrosch/sounds/521999/
-Die: https://freesound.org/people/HighPixel/sounds/577033/
-Win round/game: https://freesound.org/people/sonically_sound/sounds/624878/
-Background music: https://freesound.org/people/Seth_Makes_Sounds/sounds/672440/
+Sword swing: https://freesound.org/people/32cheeseman32/sounds/180830/ <br>
+Get hit: https://freesound.org/people/scorpion67890/sounds/614314/ <br>
+Dash: https://freesound.org/people/Kastenfrosch/sounds/521999/ <br>
+Die: https://freesound.org/people/HighPixel/sounds/577033/ <br>
+Win round/game: https://freesound.org/people/sonically_sound/sounds/624878/ <br>
+Background music: https://freesound.org/people/Seth_Makes_Sounds/sounds/672440/ <br>
 
 ### Reasoning:
 The background music was chosen because of how it fit the spooky yet calm theme of the game, and because it sounded good in general. All the other effects were chosen becuase of a mix of realism and they fit the vibe of the action. For example, the death noise is slightly unsettling in order to convey the significance of the death.
@@ -210,13 +202,7 @@ I had originally been very confident that I could weave in the narrative into th
 
 -Sir Gideon starts off as a rather slow character for two reasons. One was for balancing reasons and as an incentive for the player to choose speed as opposed to attack when upgrading. The second was to give a bit of realism to the character. Sir Gideon is a knight captain who has served many years under the empire, and is growing old. His body doesn't move the way it used to, and I wanted the beginning to reflect that (although you can increase his speed to very high levels through the upgrade system).
 
-**Document how the narrative is present in the game via assets, gameplay systems, and gameplay.**
-
 ## Rohith Saravana: Press Kit and Trailer
-
-**Include links to your presskit materials and trailer.**
-
-**Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 
 _Screenshots_
 * [level 1](https://github.com/Benlee1000/Serenity/blob/ae2b612bac768ea845e16277e664062737f33e2f/pressKit/level1.jpg)
@@ -238,6 +224,6 @@ Title Art - [Medieval Castle Background, Mokazar](https://www.deviantart.com/mok
 
 _gameplay suggestions_ - I provided suggestions to group members managing movement, input, states, map design, sounds, music, game logic, and animation in order to make the game feel fun and effortless to play. I also made suggestions to limit bugs and exploits in the game.
 
-_game balancing_ - I tested out the game as a whole and changed many underlying systems to give players a fair and rewarding challenge that ramped up in difficulty as you progressed in the levels. This took many hours of playing through the game and having others test out which balance changes made the game too hard, too easy, or just the right amount of difficulty. I added a special formula to the random number generator for attack, defense, and speed upgrades that scales with the current level the player is on. These formulas make it so each stat upgrade is desirable. They each offer their own competitive advantage: attack makes it so you break through armor easier and kill enemies in less hits, armor makes it so that taking hits from enemies is less punishing, speed makes it easier to "kite" enemies and handle larger waves of enemies by running around them. Finally, I adjusted how defense works with player's and enemies' health so that each hit must deal a minimum amount of damage. This makes it so that full-on tanking hits by just having high defense is greatly reduced.
+_game balancing_ - I tested out the game as a whole and changed many underlying systems to give players a fair and rewarding challenge that ramped up in difficulty as you progressed in the levels. This took many hours of playing through the game and having others test out which balance changes made the game too hard, too easy, or added just the right amount of difficulty. I included a [special formula](https://github.com/Benlee1000/Serenity/blob/49d17f3d1079b030f1686737d4437317ed148510/Assets/Scripts/PlayerUpgradeController.cs#L23) for the random number generator for attack, defense, and speed upgrades that scales with the current level the player is on. These formulas make it so each stat upgrade is desirable. They each offer their own competitive advantage: attack makes it so you break through armor easier and kill enemies in less hits, armor makes it so that taking hits from enemies is less punishing, speed makes it easier to "kite" enemies and handle larger waves of enemies by running around them. Finally, I adjusted how defense works with player's and enemies' health so that each hit must deal a minimum amount of damage. This makes it so that full-on tanking hits by just having high defense is greatly reduced.
 
 _enemy balance_ - I changed all enemy prefab stats to reflect their design, giving each strengths and weaknesses. Goblins move fast, but have little damage and health, with no armor. Skeletons start off moving the same speed as the player and have average health and attack, but have low armor. Knights have incredible damage, high health, and high armor, but significantly lack in the movement department. Additionally, I modified each level to have a custom range of waves, enemies, and also enemy types. The first 3 levels introduce you to a new enemy type on each level. The last 3 levels ramp up the number of waves significantly, with the last level requiring you to utilize your upgrades, knowledge of enemy types, and obstacles in order to emerge victorious.
